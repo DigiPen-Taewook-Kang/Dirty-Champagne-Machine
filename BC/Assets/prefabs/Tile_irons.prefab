@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7652521367615475312}
   m_Layer: 0
-  m_Name: Wall_irons
+  m_Name: Tile_irons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,12 +104,12 @@ PrefabInstance:
     - target: {fileID: 3553607638468802492, guid: 1568dd43b0b2961418078ac21de84b8d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 3553607638468802492, guid: 1568dd43b0b2961418078ac21de84b8d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 3.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1568dd43b0b2961418078ac21de84b8d, type: 3}
@@ -189,12 +189,12 @@ PrefabInstance:
     - target: {fileID: 3553607638468802492, guid: 1568dd43b0b2961418078ac21de84b8d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 3553607638468802492, guid: 1568dd43b0b2961418078ac21de84b8d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 3.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1568dd43b0b2961418078ac21de84b8d, type: 3}
@@ -274,12 +274,12 @@ PrefabInstance:
     - target: {fileID: 3553607638468802492, guid: 1568dd43b0b2961418078ac21de84b8d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 3553607638468802492, guid: 1568dd43b0b2961418078ac21de84b8d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 3.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1568dd43b0b2961418078ac21de84b8d, type: 3}
@@ -359,12 +359,12 @@ PrefabInstance:
     - target: {fileID: 3553607638468802492, guid: 1568dd43b0b2961418078ac21de84b8d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 3553607638468802492, guid: 1568dd43b0b2961418078ac21de84b8d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 3.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1568dd43b0b2961418078ac21de84b8d, type: 3}
