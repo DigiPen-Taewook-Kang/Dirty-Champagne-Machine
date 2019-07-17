@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4919756429182748293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5, y: -0.5, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 3.1, y: 3.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4919756430778947957}
   m_RootOrder: 3
@@ -156,7 +156,7 @@ Transform:
   m_GameObject: {fileID: 4919756429555110246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 3.1, y: 3.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4919756430778947957}
   m_RootOrder: 0
@@ -284,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 4919756429576795960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 3.1, y: 3.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4919756430778947957}
   m_RootOrder: 2
@@ -412,7 +412,7 @@ Transform:
   m_GameObject: {fileID: 4919756430288339384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5, y: 0.5, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 3.1, y: 3.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4919756430778947957}
   m_RootOrder: 1
@@ -522,7 +522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4919756430778947957}
   m_Layer: 0
-  m_Name: Wall_normal
+  m_Name: Tile_normal
   m_TagString: WALL_normal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
