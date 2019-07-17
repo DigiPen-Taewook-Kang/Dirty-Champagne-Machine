@@ -19,8 +19,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Player_Bullet
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: Grass
     uniqueID: 470263389
+    locked: 0
+  - name: 
+    uniqueID: 181836107
     locked: 0

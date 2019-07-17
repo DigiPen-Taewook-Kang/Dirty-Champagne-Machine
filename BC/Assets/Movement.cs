@@ -5,6 +5,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float speed = 5;
+
+    public bool isSlippery = false;
+
     protected bool isMoving = false;
 
     protected IEnumerator MoveHorizontal(float movementHorizontal, Rigidbody2D rb2d)
@@ -24,8 +27,10 @@ public class Movement : MonoBehaviour
             movementProgress += speed * Time.deltaTime;
             movementProgress = Mathf.Clamp(movementProgress, 0f, 1f);
             movement = new Vector2(speed * Time.deltaTime * movementHorizontal, 0f);
-            endPos = rb2d.position + movement;
-
+            if (!isSlippery)
+                endPos = rb2d.position + movement;
+            else
+                endPos = rb2d.position + movement * 2;
             if (movementProgress == 1) endPos = new Vector2(Mathf.Round(endPos.x), endPos.y);
             rb2d.MovePosition(endPos);
 
@@ -63,7 +68,10 @@ public class Movement : MonoBehaviour
             movementProgress = Mathf.Clamp(movementProgress, 0f, 1f);
 
             movement = new Vector2(0f, speed * Time.deltaTime * movementVertical);
-            endPos = rb2d.position + movement;
+            if (!isSlippery)
+                endPos = rb2d.position + movement;
+            else
+                endPos = rb2d.position + movement * 2;
 
             if (movementProgress == 1) endPos = new Vector2(endPos.x, Mathf.Round(endPos.y));
             rb2d.MovePosition(endPos);
