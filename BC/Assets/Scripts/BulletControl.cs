@@ -6,10 +6,8 @@ public class BulletControl : MonoBehaviour
 {
     // Start is called before the first frame update
 
-
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -28,6 +26,7 @@ public class BulletControl : MonoBehaviour
         }
         else if(coll.gameObject.tag == "WALL_normal" || coll.gameObject.tag== "T1Tank" || coll.gameObject.tag == "T2Tank" || coll.gameObject.tag == "T3Tank")
         {
+
             Destroy(coll.gameObject);
         }
         GameObject[] playerTank = GameObject.FindGameObjectsWithTag("Player");
