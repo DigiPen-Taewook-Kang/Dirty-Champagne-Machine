@@ -6,6 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class ScenePasser: MonoBehaviour
 {
+    /* scene process
+     * 
+     * mainmenu -> #start#
+     * 
+     * -> curStage -> ingame -> score   -> (next)curStage -> ...
+     *                                  -> "gameover" -> mainmenu
+     *                                  
+     * */
+
+
     // press enter -> scene change
 
     string activeSceneName;
@@ -32,15 +42,28 @@ public class ScenePasser: MonoBehaviour
                 // check gameover condition (y: mainmenu , n: CurStage)
                 if (IngameTester.overFlag) // t: go Mainmenu f: next stage
                 {
-                    SceneManager.LoadScene("Mainmenu");
+                    // load GameOver -> load Mainmenu
+                    //SceneManager.LoadScene("Mainmenu");
+                    SceneManager.LoadScene("GameOver");
                     return;
                 }
-                SceneManager.LoadScene("CurStage");
-
+                else
+                {
+                    // Set StageNumb +1
+                    StageNumbChanger.stageChangeFlag = true;
+                    SceneManager.LoadScene("CurStage");
+                }
             }
-            
-            
+            else if(activeSceneName == "GameOver")
+            {
+                SceneManager.LoadScene("Mainmenu");
+            }
         }
+
+
+
+
+
     }
 
     // Update is called once per frame
