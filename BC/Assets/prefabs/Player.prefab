@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 10
   firerate: 1
-  Gun: {fileID: 0}
+  Gun: {fileID: 3979138719236317285}
   projectile: {fileID: 8781170477996231766, guid: e4ee469609e131841b13ebce4e4c530a,
     type: 3}
   IsBulletAlive: 0
