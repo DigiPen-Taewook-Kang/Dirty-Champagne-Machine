@@ -2,42 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFireControl : MonoBehaviour
+public class EnemyFireControl : MonoBehaviour
 {
     public float bulletSpeed = 10f;
-    public float firerate = 0.5f;
-    private float nextfire = 0.0f;
+    private float coundown = 5f;
 
     public Transform Gun;
     public Rigidbody2D projectile;
 
     private Vector3 FireDirection;
 
-    [HideInInspector]
     public bool IsBulletAlive;
 
+    private string myBullet;
 
-    // Start is called before the first frame update
     void Start()
     {
         FireDirection = new Vector3(0, 1, 0);
         IsBulletAlive = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if ( (Input.GetKeyDown(KeyCode.Z) && Time.time > nextfire) && !IsBulletAlive)
+        if (IsBulletAlive == false)
         {
-            nextfire = Time.time + firerate;
-            Fire();
+            coundown -= Time.deltaTime;
+            if (coundown <= 0)
+            {
+                Fire();
+            }
+        }
+
+        if (GameObject.Find(myBullet) == null)
+        {
+            IsBulletAlive = false;
         }
     }
-
     void Fire()
     {
         Rigidbody2D bulletInstance = Instantiate(projectile, Gun.position, transform.rotation) as Rigidbody2D;
+        bulletInstance.name += name;
+        myBullet = bulletInstance.name;
+        
         bulletInstance.velocity = transform.up * bulletSpeed;
+        coundown = 5f;
         IsBulletAlive = true;
     }
 }
