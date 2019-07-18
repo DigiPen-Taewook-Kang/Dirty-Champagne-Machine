@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : Movement {
+public class EnemyAI : MovementEnemy {
     //change it to movement <- mono
-Rigidbody2D rb2d;
+    Rigidbody2D rb2d;
     float h, v;
+
     [SerializeField]
     LayerMask blockingLayer;
     enum Direction { Up, Down, Left, Right };
+
+
     
     void Start()
     {
@@ -16,7 +19,7 @@ Rigidbody2D rb2d;
         RandomDirection();
     }
 
-public void RandomDirection()
+    public void RandomDirection()
     {
         CancelInvoke("RandomDirection");
         
@@ -63,11 +66,18 @@ public void RandomDirection()
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+  
         RandomDirection();
     }
 
     private void FixedUpdate()
     {
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(1, 0), blockingLayer);
+
+
+
+
+
         if (v != 0 && isMoving == false) StartCoroutine(MoveVertical(v, rb2d));
         else if (h != 0 && isMoving == false) StartCoroutine(MoveHorizontal(h, rb2d));
     }

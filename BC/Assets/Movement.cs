@@ -10,6 +10,9 @@ public class Movement : MonoBehaviour
 
     protected bool isMoving = false;
 
+    float h, v;
+    Rigidbody2D rb2d;
+
     protected IEnumerator MoveHorizontal(float movementHorizontal, Rigidbody2D rb2d)
     {
         isMoving = true;
@@ -19,24 +22,34 @@ public class Movement : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0, 0, -movementHorizontal * 90f);
         transform.rotation = rotation;
 
-        float movementProgress = 0f;
-        Vector2 movement, endPos;
 
-        while (movementProgress < Mathf.Abs(movementHorizontal))
+        if (GameObject.FindGameObjectWithTag("Player_Gun").GetComponent<CheckCollide>().IsCollide == false)
         {
-            movementProgress += speed * Time.deltaTime;
-            movementProgress = Mathf.Clamp(movementProgress, 0f, 1f);
-            movement = new Vector2(speed * Time.deltaTime * movementHorizontal, 0f);
-            if (!isSlippery)
-                endPos = rb2d.position + movement;
-            else
-                endPos = rb2d.position + movement * 2;
-            if (movementProgress == 1) endPos = new Vector2(Mathf.Round(endPos.x), endPos.y);
-            rb2d.MovePosition(endPos);
 
-            yield return new WaitForFixedUpdate();
+
+            float movementProgress = 0f;
+            Vector2 movement, endPos;
+
+            while (movementProgress < Mathf.Abs(movementHorizontal))
+            {
+                movementProgress += speed * Time.deltaTime;
+                movementProgress = Mathf.Clamp(movementProgress, 0f, 1f);
+                movement = new Vector2(speed * Time.deltaTime * movementHorizontal, 0f);
+                if (!isSlippery)
+                    endPos = rb2d.position + movement;
+                else
+                    endPos = rb2d.position + movement * 2;
+
+
+                if (movementProgress == 1)
+                    endPos = new Vector2(Mathf.Round(endPos.x), endPos.y);
+
+
+                rb2d.MovePosition(endPos);
+
+                yield return new WaitForFixedUpdate();
+            }
         }
-
         isMoving = false;
     }
 
@@ -58,33 +71,40 @@ public class Movement : MonoBehaviour
         }
         transform.rotation = rotation;
 
-        float movementProgress = 0f;
-        Vector2 endPos, movement;
-
-        while (movementProgress < Mathf.Abs(movementVertical))
+        if (GameObject.FindGameObjectWithTag("Player_Gun").GetComponent<CheckCollide>().IsCollide == false)
         {
 
-            movementProgress += speed * Time.deltaTime;
-            movementProgress = Mathf.Clamp(movementProgress, 0f, 1f);
 
-            movement = new Vector2(0f, speed * Time.deltaTime * movementVertical);
-            if (!isSlippery)
-                endPos = rb2d.position + movement;
-            else
-                endPos = rb2d.position + movement * 2;
+            float movementProgress = 0f;
+            Vector2 endPos, movement;
 
-            if (movementProgress == 1) endPos = new Vector2(endPos.x, Mathf.Round(endPos.y));
-            rb2d.MovePosition(endPos);
-            yield return new WaitForFixedUpdate();
+            while (movementProgress < Mathf.Abs(movementVertical))
+            {
 
+                movementProgress += speed * Time.deltaTime;
+                movementProgress = Mathf.Clamp(movementProgress, 0f, 1f);
+
+                movement = new Vector2(0f, speed * Time.deltaTime * movementVertical);
+                if (!isSlippery)
+                    endPos = rb2d.position + movement;
+                else
+                    endPos = rb2d.position + movement * 2;
+
+                if (movementProgress == 1)
+                    endPos = new Vector2(endPos.x, Mathf.Round(endPos.y));
+
+
+                rb2d.MovePosition(endPos);
+
+                yield return new WaitForFixedUpdate();
+
+            }
         }
-
         isMoving = false;
     }
 
 
-    float h, v;
-    Rigidbody2D rb2d;
+
 
     void Start()
     {
@@ -102,7 +122,13 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+
+
+            h = Input.GetAxisRaw("Horizontal");
+            v = Input.GetAxisRaw("Vertical");
+        
+
     }
+
+
 }

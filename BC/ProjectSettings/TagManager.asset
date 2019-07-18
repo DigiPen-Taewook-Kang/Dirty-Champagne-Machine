@@ -14,6 +14,10 @@ TagManager:
   - T2Tank
   - T3Tank
   - T4Tank
+  - Base
+  - Player_Tank
+  - Player_Block
+  - Player_Gun
   layers:
   - Default
   - TransparentFX
@@ -23,12 +27,12 @@ TagManager:
   - UI
   - 
   - 
-  - Player
+  - Player_Tank
   - Player_Bullet
-  - BattleCity_Water
-  - 
-  - 
-  - 
+  - Map_Water
+  - ENEMY
+  - CANTPASS
+  - Player_Gun
   - 
   - 
   - 
