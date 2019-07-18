@@ -19,6 +19,7 @@ public class EnemyBulletControl : MonoBehaviour
     {
         if (coll.gameObject.tag == "WALL_normal" || coll.gameObject.tag == "Player")
         {
+            
             Destroy(coll.gameObject);
         }
 
