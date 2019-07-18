@@ -10,6 +10,11 @@ public class Movement : MonoBehaviour
 
     protected bool isMoving = false;
 
+    // Sound Variables
+    public AudioClip IdleSound;
+    public AudioClip MoveSound;
+    public AudioSource PlayerSoundSource;
+
     protected IEnumerator MoveHorizontal(float movementHorizontal, Rigidbody2D rb2d)
     {
         isMoving = true;
@@ -88,6 +93,9 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        // Initialize Sound Variables
+        PlayerSoundSource.clip = IdleSound;
+
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -98,6 +106,13 @@ public class Movement : MonoBehaviour
             StartCoroutine(MoveHorizontal(h, rb2d));
         else if (v != 0 && !isMoving)
             StartCoroutine(MoveVertical(v, rb2d));
+
+        // Update Sound and Play
+        PlayerSoundSource.clip = (isMoving) ? MoveSound : IdleSound;
+        if(!PlayerSoundSource.isPlaying)
+        {
+            PlayerSoundSource.Play();
+        }
     }
 
     void Update()
