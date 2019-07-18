@@ -17,6 +17,7 @@ TagManager:
   - Player_Block
   - Player_Gun
   - Player_Tank
+  - Base
   layers:
   - Default
   - TransparentFX

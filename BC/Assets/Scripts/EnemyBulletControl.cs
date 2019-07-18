@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyBulletControl : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Sprite BaseAfter;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -19,8 +19,12 @@ public class EnemyBulletControl : MonoBehaviour
     {
         if (coll.gameObject.tag == "WALL_normal" || coll.gameObject.tag == "Player")
         {
-            
             Destroy(coll.gameObject);
+        }
+        else if(coll.gameObject.tag == "Base")
+        {
+            coll.gameObject.GetComponent<SpriteRenderer>().sprite = BaseAfter;
+            GameObject.Find("MainCamera").GetComponent<SceneHandler>().isGameOver = true;
         }
 
         Destroy(gameObject);

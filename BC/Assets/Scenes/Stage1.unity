@@ -916,6 +916,7 @@ GameObject:
   - component: {fileID: 357207547}
   - component: {fileID: 357207546}
   - component: {fileID: 357207549}
+  - component: {fileID: 357207550}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1002,6 +1003,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 5
   Enemy: {fileID: 2479231175215642761, guid: 212714bfa6ed97e4fb2e0fe533bf2ae3, type: 3}
+--- !u!114 &357207550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357207545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe188acd270edf48bfec114879f619f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGameOver: 0
 --- !u!1001 &404127913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5286,12 +5300,12 @@ PrefabInstance:
     - target: {fileID: 3748089717725496797, guid: 5a2da05e4773f8e40852161995c00748,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.66
+      value: -2.96
       objectReference: {fileID: 0}
     - target: {fileID: 3748089717725496797, guid: 5a2da05e4773f8e40852161995c00748,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.52
+      value: 10.12
       objectReference: {fileID: 0}
     - target: {fileID: 3748089717725496797, guid: 5a2da05e4773f8e40852161995c00748,
         type: 3}
