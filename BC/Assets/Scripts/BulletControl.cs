@@ -30,7 +30,7 @@ public class BulletControl : MonoBehaviour
         {
             Destroy(coll.gameObject);
         }
-        GameObject[] playerTank = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] playerTank = GameObject.FindGameObjectsWithTag("Player_Tank");
 
         playerTank[0].GetComponent<PlayerFireControl>().IsBulletAlive = false;
 

@@ -932,7 +932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 5
-  Enemy: {fileID: 4609882324960027405, guid: 212714bfa6ed97e4fb2e0fe533bf2ae3, type: 3}
+  Enemy: {fileID: 2479231175215642761, guid: 212714bfa6ed97e4fb2e0fe533bf2ae3, type: 3}
 --- !u!1001 &404127913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5056,6 +5056,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2134257702514146035, guid: 212714bfa6ed97e4fb2e0fe533bf2ae3,
+        type: 3}
+      propertyPath: blockingLayer.m_Bits
+      value: 8192
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 212714bfa6ed97e4fb2e0fe533bf2ae3, type: 3}
