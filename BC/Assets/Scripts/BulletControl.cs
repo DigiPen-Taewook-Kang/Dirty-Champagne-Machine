@@ -24,7 +24,9 @@ public class BulletControl : MonoBehaviour
 
         if(coll.gameObject.tag == "T4Tank" || coll.gameObject.tag == "WALL")
         {
-            //coll.gameObject.GetComponent<TankHealth>().HP -= 1;
+            coll.gameObject.GetComponent<EnemyAI>().health -= 1;
+            if(coll.gameObject.GetComponent<EnemyAI>().health == 0)
+                Destroy(coll.gameObject);
         }
         else if(coll.gameObject.tag == "WALL_normal" || coll.gameObject.tag== "T1Tank" || coll.gameObject.tag == "T2Tank" || coll.gameObject.tag == "T3Tank")
         {

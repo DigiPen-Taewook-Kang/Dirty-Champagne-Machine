@@ -11,7 +11,7 @@ public class EnemyAI : MovementEnemy {
     LayerMask blockingLayer;
     enum Direction { Up, Down, Left, Right };
 
-
+    public int health;
     
     void Start()
     {
