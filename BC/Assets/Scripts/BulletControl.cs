@@ -22,11 +22,11 @@ public class BulletControl : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D coll)
     {
 
-        if(coll.gameObject.tag == "LV4TANK" || coll.gameObject.tag == "WALL")
+        if(coll.gameObject.tag == "T4Tank" || coll.gameObject.tag == "WALL")
         {
             //coll.gameObject.GetComponent<TankHealth>().HP -= 1;
         }
-        else if(coll.gameObject.tag == "WALL_normal")
+        else if(coll.gameObject.tag == "WALL_normal" || coll.gameObject.tag== "T1Tank" || coll.gameObject.tag == "T2Tank" || coll.gameObject.tag == "T3Tank")
         {
             Destroy(coll.gameObject);
         }

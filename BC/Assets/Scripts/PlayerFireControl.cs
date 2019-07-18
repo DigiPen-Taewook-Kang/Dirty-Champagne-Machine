@@ -32,7 +32,6 @@ public class PlayerFireControl : MonoBehaviour
             nextfire = Time.time + firerate;
             Fire();
         }
-
     }
 
     void Fire()
@@ -41,5 +40,4 @@ public class PlayerFireControl : MonoBehaviour
         bulletInstance.velocity = transform.up * bulletSpeed;
         IsBulletAlive = true;
     }
-
 }
