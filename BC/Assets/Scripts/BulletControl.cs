@@ -10,11 +10,7 @@ public class BulletControl : MonoBehaviour
     {
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 
 
     private void OnCollisionEnter2D(Collision2D coll)
@@ -24,12 +20,16 @@ public class BulletControl : MonoBehaviour
         {
             //coll.gameObject.GetComponent<TankHealth>().HP -= 1;
         }
-        else if(coll.gameObject.tag == "WALL_normal" || coll.gameObject.tag== "T1Tank" || coll.gameObject.tag == "T2Tank" || coll.gameObject.tag == "T3Tank")
+        else if(coll.gameObject.tag == "WALL_normal" || 
+                coll.gameObject.tag== "T1Tank" || 
+                coll.gameObject.tag == "T2Tank" || 
+                coll.gameObject.tag == "T3Tank" ||
+                coll.gameObject.tag == "Base")
         {
 
             Destroy(coll.gameObject);
         }
-        GameObject[] playerTank = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] playerTank = GameObject.FindGameObjectsWithTag("Player_Tank");
 
         playerTank[0].GetComponent<PlayerFireControl>().IsBulletAlive = false;
 

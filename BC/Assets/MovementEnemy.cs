@@ -1,27 +1,17 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class MovementEnemy : MonoBehaviour
 {
-    // Sound Variables
-    public AudioClip IdleSound;
-    public AudioClip MoveSound;
-    public AudioSource PlayerSoundSource;
-
     public float speed = 5;
 
     public bool isSlippery = false;
 
     protected bool isMoving = false;
 
-<<<<<<< HEAD:BC/Assets/Scripts/Movement.cs
-    private bool canMove = true;
-=======
     float h, v;
     Rigidbody2D rb2d;
->>>>>>> NotTechManager:BC/Assets/Movement.cs
-
     protected IEnumerator MoveHorizontal(float movementHorizontal, Rigidbody2D rb2d)
     {
         isMoving = true;
@@ -32,8 +22,6 @@ public class Movement : MonoBehaviour
         transform.rotation = rotation;
 
 
-        if (GameObject.FindGameObjectWithTag("Player_Gun").GetComponent<CheckCollide>().IsCollide == false)
-        {
 
 
             float movementProgress = 0f;
@@ -58,7 +46,6 @@ public class Movement : MonoBehaviour
 
                 yield return new WaitForFixedUpdate();
             }
-        }
         isMoving = false;
     }
 
@@ -79,9 +66,6 @@ public class Movement : MonoBehaviour
             rotation = Quaternion.Euler(0, 0, 0);
         }
         transform.rotation = rotation;
-
-        if (GameObject.FindGameObjectWithTag("Player_Gun").GetComponent<CheckCollide>().IsCollide == false)
-        {
 
 
             float movementProgress = 0f;
@@ -108,61 +92,17 @@ public class Movement : MonoBehaviour
                 yield return new WaitForFixedUpdate();
 
             }
-        }
         isMoving = false;
     }
-
-
-
-
+    // Start is called before the first frame update
     void Start()
     {
-        // Initialize Sound Variables
-        if (PlayerSoundSource)
-        {
-            PlayerSoundSource.clip = IdleSound;
-        }
-
-        rb2d = GetComponent<Rigidbody2D>();
-        canMove = true;
+        
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (h != 0 && !isMoving)
-            StartCoroutine(MoveHorizontal(h, rb2d));
-        else if (v != 0 && !isMoving)
-            StartCoroutine(MoveVertical(v, rb2d));
-
-        // Update and Play Sound
-        if(PlayerSoundSource)
-        {
-            PlayerSoundSource.clip = (isMoving) ? MoveSound : IdleSound;
-            if (!PlayerSoundSource.isPlaying)
-            {
-                PlayerSoundSource.Play();
-            }
-        }
-    }
-
     void Update()
     {
-<<<<<<< HEAD:BC/Assets/Scripts/Movement.cs
-        if(canMove)
-        {
-            h = Input.GetAxisRaw("Horizontal");
-            v = Input.GetAxisRaw("Vertical");
-        }
-=======
-
-
-            h = Input.GetAxisRaw("Horizontal");
-            v = Input.GetAxisRaw("Vertical");
         
-
->>>>>>> NotTechManager:BC/Assets/Movement.cs
     }
-
-
 }
