@@ -190,7 +190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: STAGE 1
+  m_Text: STAGE 0
 --- !u!222 &152063335
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 682130226}
   - component: {fileID: 682130225}
   - component: {fileID: 682130224}
+  - component: {fileID: 682130230}
   - component: {fileID: 682130228}
   m_Layer: 5
   m_Name: Canvas
@@ -383,6 +384,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50b79dc48bdfd854bb0030ad9a1cec9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &682130230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682130223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcecd5eae3377c4191ce9f3e3c43fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1438227180

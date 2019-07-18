@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainmenuSelector : MonoBehaviour
+public class MainmenuController : MonoBehaviour
 {
     /* scene process
      * 
@@ -18,16 +18,20 @@ public class MainmenuSelector : MonoBehaviour
     public GameObject icon;
     public GameObject[] tab;
 
+    static public int curStage;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        IngameTester.overFlag = false;   
+        IngameTester.overFlag = false;
+        
+        StageNumbChanger.stageChangeFlag = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     private void FixedUpdate()
@@ -45,6 +49,7 @@ public class MainmenuSelector : MonoBehaviour
             // selected tab start -> mode set & scene change
             if (curSelect == 0) // single mode
             {
+                curStage = 0;
                 SceneManager.LoadScene("CurStage");
             }
         }

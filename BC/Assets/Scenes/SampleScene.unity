@@ -574,6 +574,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7278690870290178197, guid: 42bb328d754cb124a91f556e098f3a5a,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile_grass
+      objectReference: {fileID: 0}
     - target: {fileID: 7278690870290178186, guid: 42bb328d754cb124a91f556e098f3a5a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -629,11 +634,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7278690870290178197, guid: 42bb328d754cb124a91f556e098f3a5a,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile_grass
-      objectReference: {fileID: 0}
     - target: {fileID: 7278690870290178187, guid: 42bb328d754cb124a91f556e098f3a5a,
         type: 3}
       propertyPath: m_SortingLayer
@@ -648,6 +648,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3553607638468802488, guid: 1568dd43b0b2961418078ac21de84b8d,
+        type: 3}
+      propertyPath: m_Name
+      value: Tile_iron
+      objectReference: {fileID: 0}
     - target: {fileID: 3553607638468802492, guid: 1568dd43b0b2961418078ac21de84b8d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -702,11 +707,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3553607638468802488, guid: 1568dd43b0b2961418078ac21de84b8d,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile_iron
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1568dd43b0b2961418078ac21de84b8d, type: 3}
