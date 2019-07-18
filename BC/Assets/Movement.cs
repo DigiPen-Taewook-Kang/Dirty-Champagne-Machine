@@ -7,8 +7,9 @@ public class Movement : MonoBehaviour
     public float speed = 5;
 
     public bool isSlippery = false;
-
     protected bool isMoving = false;
+
+    private Animation animation;
 
     protected IEnumerator MoveHorizontal(float movementHorizontal, Rigidbody2D rb2d)
     {
@@ -89,6 +90,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        animation = GetComponent<Animation>();
     }
 
     // Update is called once per frame
@@ -104,5 +106,14 @@ public class Movement : MonoBehaviour
     {
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
+
+        if(isMoving)
+        {
+            animation.Play();
+        }
+        else
+        {
+            animation.Stop();
+        }
     }
 }
