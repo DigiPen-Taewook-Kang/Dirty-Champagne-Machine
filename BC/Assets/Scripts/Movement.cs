@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    // Sound Variables
+    public AudioClip IdleSound;
+    public AudioClip MoveSound;
+    public AudioSource PlayerSoundSource;
+
     public float speed = 5;
 
     public bool isSlippery = false;
@@ -90,6 +95,12 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        // Initialize Sound Variables
+        if (PlayerSoundSource)
+        {
+            PlayerSoundSource.clip = IdleSound;
+        }
+
         rb2d = GetComponent<Rigidbody2D>();
         canMove = true;
     }
@@ -101,6 +112,16 @@ public class Movement : MonoBehaviour
             StartCoroutine(MoveHorizontal(h, rb2d));
         else if (v != 0 && !isMoving)
             StartCoroutine(MoveVertical(v, rb2d));
+
+        // Update and Play Sound
+        if(PlayerSoundSource)
+        {
+            PlayerSoundSource.clip = (isMoving) ? MoveSound : IdleSound;
+            if (!PlayerSoundSource.isPlaying)
+            {
+                PlayerSoundSource.Play();
+            }
+        }
     }
 
     void Update()
