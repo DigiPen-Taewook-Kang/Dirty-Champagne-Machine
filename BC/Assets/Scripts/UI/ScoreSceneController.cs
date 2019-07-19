@@ -21,10 +21,6 @@ public class ScoreSceneController : MonoBehaviour
     void Update()
     {
         // Debug.Log("?");
-
-       
             stage.text = "STAGE " + MainmenuController.curStage;
-        
-
     }
 }
