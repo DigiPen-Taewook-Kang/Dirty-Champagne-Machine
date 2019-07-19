@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ScenePasser: MonoBehaviour
 {
+    public bool isGameOver;
+
     /* scene process
      * 
      * mainmenu -> #start#
@@ -35,7 +37,12 @@ public class ScenePasser: MonoBehaviour
 
             if (activeSceneName == "CurStage")
             {
-                SceneManager.LoadScene("Ingame");
+                // #################
+
+                //SceneManager.LoadScene("Ingame");
+                SceneManager.LoadScene("Stage1");
+
+                // #################
             }
             else if (activeSceneName == "Score")
             {
@@ -59,11 +66,6 @@ public class ScenePasser: MonoBehaviour
                 SceneManager.LoadScene("Mainmenu");
             }
         }
-
-
-
-
-
     }
 
     // Update is called once per frame

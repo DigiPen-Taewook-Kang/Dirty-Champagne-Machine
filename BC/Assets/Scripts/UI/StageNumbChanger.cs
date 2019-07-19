@@ -13,7 +13,7 @@ public class StageNumbChanger : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        StageObj = GameObject.Find("Stage");
+        StageObj = GameObject.Find("StageNumb");
         //stageNumb = GetComponentInChildren<Text>();
         stage = StageObj.GetComponent<Text>();
     }
@@ -23,7 +23,6 @@ public class StageNumbChanger : MonoBehaviour
     {
        // Debug.Log("?");
         
-
         if (stageChangeFlag == true)
         {
             stageChangeFlag = false;

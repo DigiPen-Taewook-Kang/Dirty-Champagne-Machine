@@ -24,7 +24,8 @@ public class EnemyBulletControl : MonoBehaviour
         else if(coll.gameObject.tag == "Base")
         {
             coll.gameObject.GetComponent<SpriteRenderer>().sprite = BaseAfter;
-            GameObject.Find("Main Camera").GetComponent<SceneHandler>().isGameOver = true;
+            //GameObject.Find("MainCamera").GetComponent<SceneHandler>().isGameOver = true;
+            SceneHandler.isGameOver = true;
         }
 
         Destroy(gameObject);

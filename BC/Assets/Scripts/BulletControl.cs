@@ -6,6 +6,8 @@ public class BulletControl : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    IngameUIController UIController;
+
     public Sprite BaseAfter;
 
     // Sound Variables
@@ -14,6 +16,11 @@ public class BulletControl : MonoBehaviour
     public AudioClip baseDestroyed;
     public AudioClip hitWall;
     private AudioSource BulletHitSource;
+
+    private void Awake()
+    {
+        UIController = GameObject.Find("UI").GetComponent<IngameUIController>();
+    }
 
     private ScoreScript scoreScript;
 
@@ -45,8 +52,11 @@ public class BulletControl : MonoBehaviour
         if(coll.gameObject.tag == "T4Tank")
         {
             coll.gameObject.GetComponent<EnemyAI>().health -= 1;
-            if(coll.gameObject.GetComponent<EnemyAI>().health == 0)
+            if (coll.gameObject.GetComponent<EnemyAI>().health == 0)
+            {
+                UIController.EnemyDestroy();
                 Destroy(coll.gameObject);
+            }
         }
         else if(coll.gameObject.tag == "WALL_normal")
         {
@@ -58,13 +68,17 @@ public class BulletControl : MonoBehaviour
             Score(100);
             scoreScript.KilledTank[0]++;
             BulletHitSource.clip = enemyDied;
+            UIController.EnemyDestroy();
+
             Destroy(coll.gameObject);
         }
         else if (coll.gameObject.tag == "Base")
         {
             BulletHitSource.clip = baseDestroyed;
             coll.gameObject.GetComponent<SpriteRenderer>().sprite = BaseAfter;
-            GameObject.Find("Main Camera").GetComponent<SceneHandler>().isGameOver = true;
+            //GameObject.Find("Main Camera").GetComponent<SceneHandler>().isGameOver = true;
+            SceneHandler.isGameOver = true;
+            
         }
         GameObject[] playerTank = GameObject.FindGameObjectsWithTag("Player_Tank");
 

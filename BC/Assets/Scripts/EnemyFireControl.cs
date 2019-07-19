@@ -25,27 +25,27 @@ public class EnemyFireControl : MonoBehaviour
 
     void Update()
     {
-        if (IsBulletAlive == false)
-        {
-            coundown -= Time.deltaTime;
-            if (coundown <= 0)
-            {
-                Fire();
-                CheckCollide temp = transform.GetChild(0).GetComponent<CheckCollide>();
-                if (temp.IsCollide && temp.CollidingObj == "WALL_normal" && numCancelDelay < 2)
-                {
-                    coundown = 0;
-                    numCancelDelay++;
-                }
-                else
-                    numCancelDelay = 0;
-            }
-        }
+        //if (IsBulletAlive == false)
+        //{
+        //    coundown -= Time.deltaTime;
+        //    if (coundown <= 0)
+        //    {
+        //        Fire();
+        //        CheckCollide temp = transform.GetChild(0).GetComponent<CheckCollide>();
+        //        if (temp.IsCollide && temp.CollidingObj == "WALL_normal" && numCancelDelay < 2)
+        //        {
+        //            coundown = 0;
+        //            numCancelDelay++;
+        //        }
+        //        else
+        //            numCancelDelay = 0;
+        //    }
+        //}
 
-        if (GameObject.Find(myBullet) == null)
-        {
-            IsBulletAlive = false;
-        }
+        //if (GameObject.Find(myBullet) == null)
+        //{
+        //    IsBulletAlive = false;
+        //}
     }
 
     void Fire()
