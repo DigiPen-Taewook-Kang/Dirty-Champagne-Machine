@@ -10,6 +10,11 @@ public class Movement : MonoBehaviour
 
     protected bool isMoving = false;
 
+    // Sound Variables
+    public AudioClip IdleClip;
+    public AudioClip MoveClip;
+    public AudioSource PlayerMovementAudioSource;
+
     float h, v;
     Rigidbody2D rb2d;
 
@@ -109,6 +114,13 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+
+        // Initialize Sound Variables
+        if (PlayerMovementAudioSource)
+        {
+            PlayerMovementAudioSource.clip = IdleClip;
+            PlayerMovementAudioSource.Play();
+        }
     }
 
     // Update is called once per frame
@@ -118,6 +130,17 @@ public class Movement : MonoBehaviour
             StartCoroutine(MoveHorizontal(h, rb2d));
         else if (v != 0 && !isMoving)
             StartCoroutine(MoveVertical(v, rb2d));
+
+        // Update Sound and Play
+        if(PlayerMovementAudioSource)
+        {
+            PlayerMovementAudioSource.clip = (isMoving) ? MoveClip : IdleClip;
+
+            if(!PlayerMovementAudioSource.isPlaying)
+            {
+                PlayerMovementAudioSource.Play();
+            }
+        }
     }
 
     void Update()

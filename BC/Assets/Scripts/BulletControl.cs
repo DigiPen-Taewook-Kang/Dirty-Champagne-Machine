@@ -8,9 +8,17 @@ public class BulletControl : MonoBehaviour
 
     public Sprite BaseAfter;
 
+    // Sound Variables
+    public AudioClip strongWall;
+    public AudioClip enemyDied;
+    public AudioClip baseDestroyed;
+    private AudioSource BulletHitSource;
+
     void Start()
     {
-        
+        // Init Sound Var
+        BulletHitSource = GameObject.Find("Bullet Hit Source").GetComponent<AudioSource>();
+        BulletHitSource.clip = strongWall;
     }
 
     // Update is called once per frame
@@ -29,12 +37,18 @@ public class BulletControl : MonoBehaviour
             if(coll.gameObject.GetComponent<EnemyAI>().health == 0)
                 Destroy(coll.gameObject);
         }
-        else if(coll.gameObject.tag == "WALL_normal" || coll.gameObject.tag== "T1Tank" || coll.gameObject.tag == "T2Tank" || coll.gameObject.tag == "T3Tank")
+        else if(coll.gameObject.tag == "WALL_normal")
         {
+            Destroy(coll.gameObject);
+        }
+        else if (coll.gameObject.tag == "T1Tank" || coll.gameObject.tag == "T2Tank" || coll.gameObject.tag == "T3Tank")
+        {
+            BulletHitSource.clip = enemyDied;
             Destroy(coll.gameObject);
         }
         else if (coll.gameObject.tag == "Base")
         {
+            BulletHitSource.clip = baseDestroyed;
             coll.gameObject.GetComponent<SpriteRenderer>().sprite = BaseAfter;
             GameObject.Find("Main Camera").GetComponent<SceneHandler>().isGameOver = true;
         }
@@ -43,5 +57,8 @@ public class BulletControl : MonoBehaviour
         playerTank[0].GetComponent<PlayerFireControl>().IsBulletAlive = false;
 
         Destroy(gameObject);
+
+        // Play Sound
+        BulletHitSource.Play();
     }
 }

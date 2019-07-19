@@ -13,6 +13,10 @@ public class PlayerFireControl : MonoBehaviour
 
     private Vector3 FireDirection;
 
+    // Sound Variables
+    public AudioClip shotSoundClip;
+    public AudioSource shotSource;
+
     [HideInInspector]
     public bool IsBulletAlive;
 
@@ -20,6 +24,9 @@ public class PlayerFireControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Init Sound Variables
+        shotSource.clip = shotSoundClip;
+
         FireDirection = new Vector3(0, 1, 0);
         IsBulletAlive = false;
     }
@@ -36,6 +43,9 @@ public class PlayerFireControl : MonoBehaviour
 
     void Fire()
     {
+        // Play Sound
+        shotSource.Play();
+
         Rigidbody2D bulletInstance = Instantiate(projectile, Gun.position, transform.rotation) as Rigidbody2D;
         bulletInstance.velocity = transform.up * bulletSpeed;
         IsBulletAlive = true;
