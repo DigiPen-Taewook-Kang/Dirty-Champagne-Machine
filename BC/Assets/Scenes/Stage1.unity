@@ -3838,11 +3838,11 @@ PrefabInstance:
     - target: {fileID: 1728656498, guid: a54f91c3ef8c454448d7e5bfb49cc920, type: 3}
       propertyPath: IdleClip
       value: 
-      objectReference: {fileID: 8300000, guid: 4926b14d45180454a8d97edee7929342, type: 3}
+      objectReference: {fileID: 8300000, guid: 2bab468e2ec1f224bb46d708765a5c06, type: 3}
     - target: {fileID: 1728656498, guid: a54f91c3ef8c454448d7e5bfb49cc920, type: 3}
       propertyPath: MoveClip
       value: 
-      objectReference: {fileID: 8300000, guid: 3d525e51bed178e4c92929971cac18e7, type: 3}
+      objectReference: {fileID: 8300000, guid: fc41037e0d72b2244af2ef19fc976ace, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a54f91c3ef8c454448d7e5bfb49cc920, type: 3}
 --- !u!1001 &1417723498

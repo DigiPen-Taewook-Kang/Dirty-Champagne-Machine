@@ -12,6 +12,7 @@ public class BulletControl : MonoBehaviour
     public AudioClip strongWall;
     public AudioClip enemyDied;
     public AudioClip baseDestroyed;
+    public AudioClip hitWall;
     private AudioSource BulletHitSource;
 
     void Start()
@@ -39,6 +40,7 @@ public class BulletControl : MonoBehaviour
         }
         else if(coll.gameObject.tag == "WALL_normal")
         {
+            BulletHitSource.clip = hitWall;//
             Destroy(coll.gameObject);
         }
         else if (coll.gameObject.tag == "T1Tank" || coll.gameObject.tag == "T2Tank" || coll.gameObject.tag == "T3Tank")

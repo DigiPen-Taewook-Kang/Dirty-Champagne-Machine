@@ -98,6 +98,7 @@ MonoBehaviour:
   strongWall: {fileID: 8300000, guid: da7e04ee7ea0aa94b8a6c0622032d73f, type: 3}
   enemyDied: {fileID: 8300000, guid: 2fb7ced403ba464448cd6611188dd07b, type: 3}
   baseDestroyed: {fileID: 8300000, guid: e8bf544d6417a964ba55a95e93c91b6c, type: 3}
+  hitWall: {fileID: 8300000, guid: db09155263782c34e8a3a91102f29b0f, type: 3}
 --- !u!50 &8781170477996231766
 Rigidbody2D:
   serializedVersion: 4
