@@ -15,11 +15,16 @@ public class BulletControl : MonoBehaviour
     public AudioClip hitWall;
     private AudioSource BulletHitSource;
 
+    private ScoreScript scoreScript;
+
     void Start()
     {
         // Init Sound Var
         BulletHitSource = GameObject.Find("Bullet Hit Source").GetComponent<AudioSource>();
         BulletHitSource.clip = strongWall;
+
+        // Init ScoreScript
+        scoreScript = GameObject.Find("ScoreSystem").GetComponent<ScoreScript>();
     }
 
     // Update is called once per frame
@@ -28,6 +33,11 @@ public class BulletControl : MonoBehaviour
 
     }
 
+    private void Score(int score)
+    {
+        scoreScript.Score += score;
+        Debug.Log(scoreScript.Score.ToString());
+    }
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
@@ -40,11 +50,13 @@ public class BulletControl : MonoBehaviour
         }
         else if(coll.gameObject.tag == "WALL_normal")
         {
-            BulletHitSource.clip = hitWall;//
+            BulletHitSource.clip = hitWall;
             Destroy(coll.gameObject);
         }
         else if (coll.gameObject.tag == "T1Tank" || coll.gameObject.tag == "T2Tank" || coll.gameObject.tag == "T3Tank")
         {
+            Score(100);
+            scoreScript.KilledTank[0]++;
             BulletHitSource.clip = enemyDied;
             Destroy(coll.gameObject);
         }
