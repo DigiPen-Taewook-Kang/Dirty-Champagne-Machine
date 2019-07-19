@@ -15,7 +15,6 @@ public class SceneHandler : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(timer);
         if(isGameOver)
         {
             timer -= Time.deltaTime;

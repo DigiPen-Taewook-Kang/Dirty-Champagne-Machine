@@ -6,6 +6,8 @@ public class CheckCollide : MonoBehaviour
 {
     [HideInInspector]
     public bool IsCollide = false;
+    [HideInInspector]
+    public string CollidingObj;
 
     // Start is called before the first frame update
     void Start()
@@ -19,16 +21,13 @@ public class CheckCollide : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.collider != null)
-        {
-            IsCollide = true;
-            //print("Collision with gun");
-        }
+        IsCollide = true;
+        CollidingObj = other.tag;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         IsCollide = false;
     }
