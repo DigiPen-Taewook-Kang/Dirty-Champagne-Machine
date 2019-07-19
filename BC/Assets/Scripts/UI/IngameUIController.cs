@@ -21,14 +21,15 @@ public class IngameUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Mainmenu >> " + MainmenuController.curStage);
-        Debug.Log("curStage >> " + stage.text);
+        //Debug.Log("Mainmenu >> " + MainmenuController.curStage);
+        //Debug.Log("curStage >> " + stage.text);
+
     }
 
-    public int getLeftEnemy()
-    {
-        return leftEnemyCount;
-    }
+    //public int getLeftEnemy()
+    //{
+    //    return leftEnemyCount;
+    //}
 
     public void EnemyDestroy()
     {

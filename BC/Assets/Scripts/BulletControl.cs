@@ -48,15 +48,14 @@ public class BulletControl : MonoBehaviour
         }
         else if(coll.gameObject.tag == "WALL_normal")
         {
-            if (coll.gameObject.tag != "WALL_normal")
-            {
-                UIController.EnemyDestroy();
-            }
+  
             Destroy(coll.gameObject);
         }
         else if (coll.gameObject.tag == "T1Tank" || coll.gameObject.tag == "T2Tank" || coll.gameObject.tag == "T3Tank")
         {
             BulletHitSource.clip = enemyDied;
+            UIController.EnemyDestroy();
+
             Destroy(coll.gameObject);
         }
         else if (coll.gameObject.tag == "Base")
