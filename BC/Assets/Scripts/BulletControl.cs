@@ -14,6 +14,8 @@ public class BulletControl : MonoBehaviour
     public GameObject gameManager;
     public GameObject bullet_explosion;
     public Rigidbody2D test;
+
+    public GameObject ScoreSystem;
     
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,14 @@ public class BulletControl : MonoBehaviour
 
     }
 
+
+    void Score(int score)
+    {
+        ScoreSystem = GameObject.Find("ScoreSystem");
+        ScoreSystem.GetComponent<ScoreScript>().Score = score;
+
+        Debug.Log(ScoreSystem.GetComponent<ScoreScript>().Score.ToString());
+    }
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
@@ -51,6 +61,7 @@ public class BulletControl : MonoBehaviour
          || coll.gameObject.tag == "T4Tank"
          )
         {
+            Score(100);
             coll.gameObject.GetComponent<EnemyAI>().health--;
 
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
