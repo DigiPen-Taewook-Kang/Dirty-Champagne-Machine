@@ -49,6 +49,9 @@ public class MovementEnemy : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        if (!GameObject.Find("GameManager").GetComponent<GameItemControl>().IsFreezeOn)
+            Move();
+        else
+            transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(0, 0, 0));
     }
 }

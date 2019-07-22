@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 3979138719236317285}
   - component: {fileID: 522863075}
   - component: {fileID: 522863074}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: Gun
   m_TagString: Player_Gun
   m_Icon: {fileID: 0}
@@ -228,6 +228,8 @@ GameObject:
   - component: {fileID: 1885611383403945391}
   - component: {fileID: 2035694333601705526}
   - component: {fileID: 1728656498}
+  - component: {fileID: 224386924}
+  - component: {fileID: 527403870939102734}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player_Tank
@@ -289,7 +291,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f7532334fadde624486b95e6c8d17942, type: 3}
-  m_Color: {r: 1, g: 0.7389395, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -311,13 +313,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876f0055530eafc4bb6ca35ea7d59c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 10
-  firerate: 1
+  bulletSpeed: 20
+  firerate: 0.2
   Gun: {fileID: 3979138719236317285}
   projectile: {fileID: 8781170477996231766, guid: e4ee469609e131841b13ebce4e4c530a,
     type: 3}
-  shotSoundClip: {fileID: 0}
-  shotSource: {fileID: 0}
   IsBulletAlive: 0
 --- !u!50 &1885611383403945391
 Rigidbody2D:
@@ -379,3 +379,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 200
+  isMoving: 0
+--- !u!114 &224386924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885611383403945364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c6c38574055b643acf602033083d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 1
+  StarLevel: 0
+  ps_IsBarrierOn: 0
+  ShieldTimer: 0
+--- !u!95 &527403870939102734
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885611383403945364}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 114b00ff3b916f24ea434d2211e1e146, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

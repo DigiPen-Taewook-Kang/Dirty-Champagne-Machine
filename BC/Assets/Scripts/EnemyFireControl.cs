@@ -15,7 +15,9 @@ public class EnemyFireControl : MonoBehaviour
     public bool IsBulletAlive;
 
     private string myBullet;
-    private int numCancelDelay = 0;
+
+    
+
 
     void Start()
     {
@@ -25,35 +27,27 @@ public class EnemyFireControl : MonoBehaviour
 
     void Update()
     {
-        //if (IsBulletAlive == false)
-        //{
-        //    coundown -= Time.deltaTime;
-        //    if (coundown <= 0)
-        //    {
-        //        Fire();
-        //        CheckCollide temp = transform.GetChild(0).GetComponent<CheckCollide>();
-        //        if (temp.IsCollide && temp.CollidingObj == "WALL_normal" && numCancelDelay < 2)
-        //        {
-        //            coundown = 0;
-        //            numCancelDelay++;
-        //        }
-        //        else
-        //            numCancelDelay = 0;
-        //    }
-        //}
+        if (IsBulletAlive == false)
+        {
+            coundown -= Time.deltaTime;
+            if (coundown <= 0)
+            {
+                if(!GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameItemControl>().IsFreezeOn)
+                    Fire();
+            }
+        }
 
-        //if (GameObject.Find(myBullet) == null)
-        //{
-        //    IsBulletAlive = false;
-        //}
+        if (GameObject.Find(myBullet) == null)
+        {
+            IsBulletAlive = false;
+        }
     }
-
     void Fire()
     {
         Rigidbody2D bulletInstance = Instantiate(projectile, Gun.position, transform.rotation) as Rigidbody2D;
         bulletInstance.name += name;
         myBullet = bulletInstance.name;
-
+        
         bulletInstance.velocity = transform.up * bulletSpeed;
         coundown = 5f;
         IsBulletAlive = true;

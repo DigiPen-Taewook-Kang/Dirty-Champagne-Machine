@@ -12,12 +12,16 @@ public class EnemyAI : MonoBehaviour
 
     public int health = 1;
 
+    public bool isFreezeOn = false;
+
     List<Vector2> direction = new List<Vector2>();
 
     [SerializeField]
     LayerMask blockinglayer;
 
     public GameObject tank_explosion;
+
+
 
     void Start()
     {
@@ -81,12 +85,15 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        timer -= Time.deltaTime;
-
-        if (timer < 0)
+        if (!isFreezeOn)
         {
-            timer = 3.0f;
-            RandomDirection();
+            timer -= Time.deltaTime;
+
+            if (timer < 0)
+            {
+                timer = 3.0f;
+                RandomDirection();
+            }
         }
     }
 }

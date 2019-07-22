@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
     public float speed;
 
     private DIRECTION dir = 0;
-    private bool isMoving = false;
+    public bool isMoving = false;
 
     enum DIRECTION { NONE, LEFT, RIGHT, UP, DOWN };
     Vector2 dir_;

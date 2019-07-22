@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class EnemyBulletControl : MonoBehaviour
 {
-    public Sprite BaseAfter;
-
+    // Start is called before the first frame update
     void Start()
     {
         
     }
 
+    // Update is called once per frame
     void Update()
     {
         
     }
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "WALL_normal" || coll.gameObject.tag == "Player")
+        if (coll.gameObject.tag == "WALL_normal" ||  coll.gameObject.tag == "BaseBlock")
         {
+            
             Destroy(coll.gameObject);
-        }
-        else if(coll.gameObject.tag == "Base")
-        {
-            coll.gameObject.GetComponent<SpriteRenderer>().sprite = BaseAfter;
-            //GameObject.Find("MainCamera").GetComponent<SceneHandler>().isGameOver = true;
-            SceneHandler.isGameOver = true;
         }
 
         Destroy(gameObject);

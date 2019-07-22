@@ -6,16 +6,17 @@ using UnityEngine.UI;
 public class IngameUIController : MonoBehaviour
 {
     public GameObject[] leftEnemyIcon;
-    int leftEnemyCount = 5; // ?
+    public int leftEnemyCount; // 20
 
     Text stage;
 
     // Start is called before the first frame update
     void Start()
     {
-        stage = GameObject.Find("curStage").GetComponent<Text>();
+        leftEnemyCount = 20;
+        //stage = GameObject.Find("curStage").GetComponent<Text>();
         
-        stage.text = "" + MainmenuController.curStage;
+        //stage.text = "" + MainmenuController.curStage;
     }
 
     // Update is called once per frame

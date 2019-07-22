@@ -6,32 +6,12 @@ public class BulletControl : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    IngameUIController UIController;
-
-    public Sprite BaseAfter;
-
-    // Sound Variables
-    public AudioClip strongWall;
-    public AudioClip enemyDied;
-    public AudioClip baseDestroyed;
-    public AudioClip hitWall;
-    private AudioSource BulletHitSource;
-
-    private void Awake()
-    {
-        UIController = GameObject.Find("UI").GetComponent<IngameUIController>();
-    }
-
-    private ScoreScript scoreScript;
+    public GameObject gameManager;
+    public Rigidbody2D test;
 
     void Start()
     {
-        // Init Sound Var
-        BulletHitSource = GameObject.Find("Bullet Hit Source").GetComponent<AudioSource>();
-        BulletHitSource.clip = strongWall;
-
-        // Init ScoreScript
-        scoreScript = GameObject.Find("ScoreSystem").GetComponent<ScoreScript>();
+        
     }
 
     // Update is called once per frame
@@ -40,44 +20,23 @@ public class BulletControl : MonoBehaviour
 
     }
 
-    private void Score(int score)
-    {
-        scoreScript.Score += score;
-        Debug.Log(scoreScript.Score.ToString());
-    }
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
-
-        if(coll.gameObject.tag == "T4Tank")
+        
+        if (coll.gameObject.tag == "T4Tank" || coll.gameObject.tag == "WALL")
         {
-            coll.gameObject.GetComponent<EnemyAI>().health -= 1;
-            if (coll.gameObject.GetComponent<EnemyAI>().health == 0)
-            {
-                UIController.EnemyDestroy();
-                Destroy(coll.gameObject);
-            }
+            //coll.gameObject.GetComponent<TankHealth>().HP -= 1;
         }
-        else if(coll.gameObject.tag == "WALL_normal")
+        else if(coll.gameObject.tag == "WALL_normal" 
+            || coll.gameObject.tag== "T1Tank" 
+            || coll.gameObject.tag == "T2Tank" 
+            || coll.gameObject.tag == "T3Tank"
+            || coll.gameObject.tag == "BaseBlock"
+            )
         {
-            BulletHitSource.clip = hitWall;
+           
             Destroy(coll.gameObject);
-        }
-        else if (coll.gameObject.tag == "T1Tank" || coll.gameObject.tag == "T2Tank" || coll.gameObject.tag == "T3Tank")
-        {
-            Score(100);
-            scoreScript.KilledTank[0]++;
-            BulletHitSource.clip = enemyDied;
-            UIController.EnemyDestroy();
-
-            Destroy(coll.gameObject);
-        }
-        else if (coll.gameObject.tag == "Base")
-        {
-            BulletHitSource.clip = baseDestroyed;
-            coll.gameObject.GetComponent<SpriteRenderer>().sprite = BaseAfter;
-            //GameObject.Find("Main Camera").GetComponent<SceneHandler>().isGameOver = true;
-            SceneHandler.isGameOver = true;
             
         }
         GameObject[] playerTank = GameObject.FindGameObjectsWithTag("Player_Tank");
@@ -85,8 +44,5 @@ public class BulletControl : MonoBehaviour
         playerTank[0].GetComponent<PlayerFireControl>().IsBulletAlive = false;
 
         Destroy(gameObject);
-
-        // Play Sound
-        BulletHitSource.Play();
     }
 }

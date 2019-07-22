@@ -18,6 +18,15 @@ TagManager:
   - Player_Gun
   - Player_Tank
   - Base
+  - ITEMS
+  - BaseBlock
+  - ITEM_Star
+  - GameManager
+  - ITEM_Shield
+  - Player_Shield
+  - PlayerBullet
+  - BULLET
+  - BaseBlock_Reinforced
   layers:
   - Default
   - TransparentFX
@@ -34,7 +43,7 @@ TagManager:
   - Enemy
   - CANTPASS
   - Player_Gun
-  - 
+  - Item
   - 
   - 
   - 
