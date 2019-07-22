@@ -184,7 +184,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.1}
@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsCollide: 0
+  CollidingObj: 
 --- !u!1 &1885611383403945364
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +316,8 @@ MonoBehaviour:
   Gun: {fileID: 3979138719236317285}
   projectile: {fileID: 8781170477996231766, guid: e4ee469609e131841b13ebce4e4c530a,
     type: 3}
+  shotSoundClip: {fileID: 0}
+  shotSource: {fileID: 0}
   IsBulletAlive: 0
 --- !u!50 &1885611383403945391
 Rigidbody2D:
@@ -375,5 +378,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd72a0d0cab1cce48abcd99d4e067c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isSlippery: 0
+  speed: 200

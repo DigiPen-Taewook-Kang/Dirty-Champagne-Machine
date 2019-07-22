@@ -4,153 +4,113 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed = 5;
+    public float speed;
 
-    public bool isSlippery = false;
+    private DIRECTION dir = 0;
+    private bool isMoving = false;
 
-    protected bool isMoving = false;
+    enum DIRECTION { NONE, LEFT, RIGHT, UP, DOWN };
+    Vector2 dir_;
 
-    // Sound Variables
-    public AudioClip IdleClip;
-    public AudioClip MoveClip;
-    public AudioSource PlayerMovementAudioSource;
-
-    float h, v;
-    Rigidbody2D rb2d;
-
-    protected IEnumerator MoveHorizontal(float movementHorizontal, Rigidbody2D rb2d)
+    private void Move()
     {
-        isMoving = true;
-
-        transform.position = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
-
-        Quaternion rotation = Quaternion.Euler(0, 0, -movementHorizontal * 90f);
-        transform.rotation = rotation;
-
-
-        if (GameObject.FindGameObjectWithTag("Player_Gun").GetComponent<CheckCollide>().IsCollide == false)
+        float newspeed = Time.deltaTime * speed;
+        switch (dir)
         {
-
-
-            float movementProgress = 0f;
-            Vector2 movement, endPos;
-
-            while (movementProgress < Mathf.Abs(movementHorizontal))
-            {
-                movementProgress += speed * Time.deltaTime;
-                movementProgress = Mathf.Clamp(movementProgress, 0f, 1f);
-                movement = new Vector2(speed * Time.deltaTime * movementHorizontal, 0f);
-                if (!isSlippery)
-                    endPos = rb2d.position + movement;
-                else
-                    endPos = rb2d.position + movement * 2;
-
-
-                if (movementProgress == 1)
-                    endPos = new Vector2(Mathf.Round(endPos.x), endPos.y);
-
-
-                rb2d.MovePosition(endPos);
-
-                yield return new WaitForFixedUpdate();
-            }
+            case DIRECTION.LEFT:
+                {
+                    transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(-newspeed, 0, 0));
+                    break;
+                }
+            case DIRECTION.RIGHT:
+                {
+                    transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(newspeed, 0, 0));
+                    break;
+                }
+            case DIRECTION.UP:
+                {
+                    transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(0, newspeed, 0));
+                    break;
+                }
+            case DIRECTION.DOWN:
+                {
+                    transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(0, -newspeed, 0));
+                    break;
+                }
+            default:
+                {
+                    dir = DIRECTION.NONE;
+                    transform.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+                    isMoving = false;
+                    break;
+                }
         }
-        isMoving = false;
     }
 
-    protected IEnumerator MoveVertical(float movementVertical, Rigidbody2D rb2d)
+    private void GetDirection()
     {
-        isMoving = true;
-
-        transform.position = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
-
-        Quaternion rotation;
-
-        if (movementVertical < 0)
+        if (Input.GetKey("left"))
         {
-            rotation = Quaternion.Euler(0, 0, movementVertical * 180f);
+            if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+            {
+                dir = DIRECTION.LEFT;
+            }
+            gameObject.transform.up = Quaternion.Euler(0, 0, 90) * Vector3.up;
+
+        }
+        else if (Input.GetKey("right"))
+        {
+            if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+            {
+                dir = DIRECTION.RIGHT;
+            }
+            gameObject.transform.up = Quaternion.Euler(0, 0, -90) * Vector3.up;
+
+        }
+        else if (Input.GetKey("up"))
+        {
+            gameObject.transform.up = Quaternion.Euler(0, 0, 0) * Vector3.up;
+            if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+            {
+                dir = DIRECTION.UP;
+            }
+
+        }
+        else if (Input.GetKey("down"))
+        {
+            gameObject.transform.up = Quaternion.Euler(0, 0, 180) * Vector3.up;
+            if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+            {
+                dir = DIRECTION.DOWN;
+            }
         }
         else
         {
-            rotation = Quaternion.Euler(0, 0, 0);
-        }
-        transform.rotation = rotation;
-
-        if (GameObject.FindGameObjectWithTag("Player_Gun").GetComponent<CheckCollide>().IsCollide == false)
-        {
-
-
-            float movementProgress = 0f;
-            Vector2 endPos, movement;
-
-            while (movementProgress < Mathf.Abs(movementVertical))
-            {
-
-                movementProgress += speed * Time.deltaTime;
-                movementProgress = Mathf.Clamp(movementProgress, 0f, 1f);
-
-                movement = new Vector2(0f, speed * Time.deltaTime * movementVertical);
-                if (!isSlippery)
-                    endPos = rb2d.position + movement;
-                else
-                    endPos = rb2d.position + movement * 2;
-
-                if (movementProgress == 1)
-                    endPos = new Vector2(endPos.x, Mathf.Round(endPos.y));
-
-
-                rb2d.MovePosition(endPos);
-
-                yield return new WaitForFixedUpdate();
-
-            }
-        }
-        isMoving = false;
-    }
-
-
-
-
-    void Start()
-    {
-        rb2d = GetComponent<Rigidbody2D>();
-
-        // Initialize Sound Variables
-        if (PlayerMovementAudioSource)
-        {
-            PlayerMovementAudioSource.clip = IdleClip;
-            PlayerMovementAudioSource.Play();
+            dir = DIRECTION.NONE;
+            transform.position = new Vector3(Round1D(transform.position.x), Round1D(transform.position.y), 0);
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    public float Round1D(float value) //Return a number rounded to first decimal
     {
-        if (h != 0 && !isMoving)
-            StartCoroutine(MoveHorizontal(h, rb2d));
-        else if (v != 0 && !isMoving)
-            StartCoroutine(MoveVertical(v, rb2d));
-
-        // Update Sound and Play
-        if(PlayerMovementAudioSource)
-        {
-            PlayerMovementAudioSource.clip = (isMoving) ? MoveClip : IdleClip;
-
-            if(!PlayerMovementAudioSource.isPlaying)
-            {
-                PlayerMovementAudioSource.Play();
-            }
-        }
+        value *= 10;
+        value = Mathf.Round(value);
+        return value / 10f;
     }
 
-    void Update()
+    private void Start()
+    {}
+
+    private void Update()
     {
+        Move();
+    }
 
-
-            h = Input.GetAxisRaw("Horizontal");
-            v = Input.GetAxisRaw("Vertical");
-        
-
+    //calculations
+    private void FixedUpdate()
+    {
+        if (!isMoving)
+            GetDirection();
     }
 
 

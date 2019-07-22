@@ -4,105 +4,51 @@ using UnityEngine;
 
 public class MovementEnemy : MonoBehaviour
 {
-    public float speed = 5;
+    public float speed;
+    public int dir; //LRUD
 
-    public bool isSlippery = false;
-
-    protected bool isMoving = false;
-
-    float h, v;
-    Rigidbody2D rb2d;
-    protected IEnumerator MoveHorizontal(float movementHorizontal, Rigidbody2D rb2d)
+    private void Move()
     {
-        isMoving = true;
-
-        transform.position = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
-
-        Quaternion rotation = Quaternion.Euler(0, 0, -movementHorizontal * 90f);
-        transform.rotation = rotation;
-
-
-
-
-            float movementProgress = 0f;
-            Vector2 movement, endPos;
-
-            while (movementProgress < Mathf.Abs(movementHorizontal))
-            {
-                movementProgress += speed * Time.deltaTime;
-                movementProgress = Mathf.Clamp(movementProgress, 0f, 1f);
-                movement = new Vector2(speed * Time.deltaTime * movementHorizontal, 0f);
-                if (!isSlippery)
-                    endPos = rb2d.position + movement;
-                else
-                    endPos = rb2d.position + movement * 2;
-
-
-                if (movementProgress == 1)
-                    endPos = new Vector2(Mathf.Round(endPos.x), endPos.y);
-
-
-                rb2d.MovePosition(endPos);
-
-                yield return new WaitForFixedUpdate();
-            }
-        isMoving = false;
-    }
-
-    protected IEnumerator MoveVertical(float movementVertical, Rigidbody2D rb2d)
-    {
-        isMoving = true;
-
-        transform.position = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
-
-        Quaternion rotation;
-
-        if (movementVertical < 0)
+        float newspeed = Time.deltaTime * speed;
+        switch (dir)
         {
-            rotation = Quaternion.Euler(0, 0, movementVertical * 180f);
+            case 1:
+                {
+                    transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(-newspeed, 0, 0));
+                    break;
+                }
+            case 2:
+                {
+                    transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(newspeed, 0, 0));
+                    break;
+                }
+            case 3:
+                {
+                    transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(0, newspeed, 0));
+                    break;
+                }
+            case 4:
+                {
+                    transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(0, -newspeed, 0));
+                    break;
+                }
         }
-        else
-        {
-            rotation = Quaternion.Euler(0, 0, 0);
-        }
-        transform.rotation = rotation;
-
-
-            float movementProgress = 0f;
-            Vector2 endPos, movement;
-
-            while (movementProgress < Mathf.Abs(movementVertical))
-            {
-
-                movementProgress += speed * Time.deltaTime;
-                movementProgress = Mathf.Clamp(movementProgress, 0f, 1f);
-
-                movement = new Vector2(0f, speed * Time.deltaTime * movementVertical);
-                if (!isSlippery)
-                    endPos = rb2d.position + movement;
-                else
-                    endPos = rb2d.position + movement * 2;
-
-                if (movementProgress == 1)
-                    endPos = new Vector2(endPos.x, Mathf.Round(endPos.y));
-
-
-                rb2d.MovePosition(endPos);
-
-                yield return new WaitForFixedUpdate();
-
-            }
-        isMoving = false;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public float Round1D(float value) //Return a number rounded to first decimal
     {
-        
+        value *= 10;
+        value = Mathf.Round(value);
+        return value / 10f;
+    }
+
+    private void Start()
+    {
+        //dir = 4;
+    }
+
+    private void Update()
+    {
+        Move();
     }
 }

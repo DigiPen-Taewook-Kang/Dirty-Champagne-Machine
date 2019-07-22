@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3632389600220149314}
   - component: {fileID: 863130035096176545}
   - component: {fileID: 863130035096176554}
+  - component: {fileID: 6051553852718987324}
   m_Layer: 12
   m_Name: Enemy_armor
   m_TagString: T4Tank
@@ -143,12 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddeeee86dc804f40b7db2698fa3f447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  isSlippery: 0
-  blockingLayer:
-    serializedVersion: 2
-    m_Bits: 8192
   health: 4
+  blockinglayer:
+    serializedVersion: 2
+    m_Bits: 0
+  tank_explosion: {fileID: 0}
 --- !u!114 &863130035096176554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +166,20 @@ MonoBehaviour:
   projectile: {fileID: 5557802384693959377, guid: 4dc320f6041616f4a82039dc5f9b961f,
     type: 3}
   IsBulletAlive: 0
+--- !u!114 &6051553852718987324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748089717725496800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5414e25fc19abda428e4360928ba5043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 200
+  dir: 0
 --- !u!1 &3931562308038514213
 GameObject:
   m_ObjectHideFlags: 0

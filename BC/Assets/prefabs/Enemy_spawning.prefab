@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2597674542158449424}
   - component: {fileID: 2134257702514146035}
   - component: {fileID: 2134257702514146040}
+  - component: {fileID: 6823061193420856637}
   m_Layer: 12
   m_Name: Enemy_spawning
   m_TagString: T1Tank
@@ -173,12 +174,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddeeee86dc804f40b7db2698fa3f447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isSlippery: 0
-  blockingLayer:
+  health: 1
+  blockinglayer:
     serializedVersion: 2
     m_Bits: 0
-  health: 1
+  tank_explosion: {fileID: 0}
 --- !u!114 &2134257702514146040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,3 +196,17 @@ MonoBehaviour:
   projectile: {fileID: 5557802384693959377, guid: 4dc320f6041616f4a82039dc5f9b961f,
     type: 3}
   IsBulletAlive: 0
+--- !u!114 &6823061193420856637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2479231175215642802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5414e25fc19abda428e4360928ba5043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 200
+  dir: 0
