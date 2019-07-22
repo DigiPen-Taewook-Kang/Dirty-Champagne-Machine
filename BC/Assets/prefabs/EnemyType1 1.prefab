@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 1166082060027794456}
   - component: {fileID: 1166082060027794457}
   - component: {fileID: 7309652585959478709}
-  - component: {fileID: 9221410860620871070}
-  - component: {fileID: 6387496871471138788}
-  m_Layer: 12
+  - component: {fileID: 5230090845006497178}
+  m_Layer: 0
   m_Name: EnemyType1 1
   m_TagString: T1Tank
   m_Icon: {fileID: 0}
@@ -31,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166082060027794662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.76, y: 10.8, z: -5.921053}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -93,8 +92,9 @@ MonoBehaviour:
   isFreezeOn: 0
   blockinglayer:
     serializedVersion: 2
-    m_Bits: 0
-  tank_explosion: {fileID: 0}
+    m_Bits: 8192
+  tank_explosion: {fileID: 8176350106088291633, guid: 9b99d133f9ab51e4cba853cbcb4f0b3d,
+    type: 3}
 --- !u!212 &1166082060027794457
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -170,24 +170,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.63}
   m_EdgeRadius: 0
---- !u!114 &9221410860620871070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1166082060027794662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957c8d218e24d384ebfd85786e776f77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 10
-  Gun: {fileID: 1166082060027794461}
-  projectile: {fileID: 5557802384693959377, guid: 4dc320f6041616f4a82039dc5f9b961f,
-    type: 3}
-  IsBulletAlive: 0
---- !u!114 &6387496871471138788
+--- !u!114 &5230090845006497178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

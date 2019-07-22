@@ -20,9 +20,6 @@ public class EnemyAI : MonoBehaviour
     LayerMask blockinglayer;
 
     public GameObject tank_explosion;
-
-
-
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -48,7 +45,7 @@ public class EnemyAI : MonoBehaviour
         else
         {
             rand += 1;
-            GetComponent<MovementEnemy>().dir = rand;
+            gameObject.GetComponent<MovementEnemy>().dir = rand;
             if (rand == 1)
             {
                 gameObject.transform.up = Quaternion.Euler(0, 0, 90) * Vector3.up;
@@ -74,8 +71,12 @@ public class EnemyAI : MonoBehaviour
     {
         if (collision.gameObject.tag == "PlayerBullet")
         {
-            tank_explosion.transform.position = gameObject.transform.position;
-            tank_explosion.GetComponent<Animator>().enabled = true;
+            if (health == 0)
+            {
+                var check = Instantiate(tank_explosion, gameObject.transform.position, gameObject.transform.rotation);
+                check.GetComponent<Animator>().enabled = true;
+                Destroy(check, 0.7f);
+            }
         }
         else
         {

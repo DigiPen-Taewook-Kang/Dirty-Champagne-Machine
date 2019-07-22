@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3771331880399135099}
   - component: {fileID: 4155112513943237688}
   - component: {fileID: 404002326}
+  - component: {fileID: 5395025114821912098}
   m_Layer: 12
   m_Name: EnemyType3
   m_TagString: T3Tank
@@ -162,9 +163,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddeeee86dc804f40b7db2698fa3f447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isSlippery: 0
-  blockingLayer:
-    serializedVersion: 2
-    m_Bits: 40960
+  health: 1
   isFreezeOn: 0
+  blockinglayer:
+    serializedVersion: 2
+    m_Bits: 0
+  tank_explosion: {fileID: 8176350106088291633, guid: 9b99d133f9ab51e4cba853cbcb4f0b3d,
+    type: 3}
+--- !u!114 &5395025114821912098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410877897345621073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5414e25fc19abda428e4360928ba5043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 200
+  dir: 0

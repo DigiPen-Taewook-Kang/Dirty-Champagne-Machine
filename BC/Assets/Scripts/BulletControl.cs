@@ -12,6 +12,7 @@ public class BulletControl : MonoBehaviour
     private AudioSource BulletHitSource;
 
     public GameObject gameManager;
+    public GameObject bullet_explosion;
     public Rigidbody2D test;
     
     // Start is called before the first frame update
@@ -30,6 +31,10 @@ public class BulletControl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
+        var check = Instantiate(bullet_explosion, transform.position, gameObject.transform.rotation);
+        check.GetComponent<Animator>().enabled = true;
+        Destroy(check, 0.5f);
+
         if (coll.gameObject.tag == "WALL")
         {
             BulletHitSource.clip = strongWall;
@@ -48,7 +53,7 @@ public class BulletControl : MonoBehaviour
         {
             coll.gameObject.GetComponent<EnemyAI>().health--;
 
-            if (coll.gameObject.GetComponent<EnemyAI>().health == 0)
+            if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
             {
                 BulletHitSource.clip = enemyDead;
                 Destroy(coll.gameObject);
