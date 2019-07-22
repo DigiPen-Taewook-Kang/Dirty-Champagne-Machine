@@ -12,6 +12,11 @@ public class Movement : MonoBehaviour
     enum DIRECTION { NONE, LEFT, RIGHT, UP, DOWN };
     Vector2 dir_;
 
+    // Sound Vars
+    public AudioClip idleClip;
+    public AudioClip moveClip;
+    public AudioSource PlayerMovementAudioSource;
+
     private void Move()
     {
         float newspeed = Time.deltaTime * speed;
@@ -99,7 +104,14 @@ public class Movement : MonoBehaviour
     }
 
     private void Start()
-    {}
+    {
+        // Init Sound Vars
+        if(PlayerMovementAudioSource)
+        {
+            PlayerMovementAudioSource.clip = idleClip;
+            PlayerMovementAudioSource.Play();
+        }
+    }
 
     private void Update()
     {
@@ -111,6 +123,16 @@ public class Movement : MonoBehaviour
     {
         if (!isMoving)
             GetDirection();
+
+        if(PlayerMovementAudioSource)
+        {
+            PlayerMovementAudioSource.clip = (isMoving) ? moveClip : idleClip;
+
+            if(!PlayerMovementAudioSource.isPlaying)
+            {
+                PlayerMovementAudioSource.Play();
+            }
+        }
     }
 
 
