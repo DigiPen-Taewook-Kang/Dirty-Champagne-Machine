@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BulletControl : MonoBehaviour
 {
+    public Sprite DeadBase;
+
     // Sound Vars
     public AudioClip strongWall;
     public AudioClip enemyDead;
@@ -20,8 +22,11 @@ public class BulletControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Init Sound Vars
         BulletHitSource = GameObject.Find("Bullet Hit Source").GetComponent<AudioSource>();
         BulletHitSource.clip = strongWall;
+        // Init Score Systems
+        ScoreSystem = GameObject.Find("ScoreSystem");
     }
 
     // Update is called once per frame
@@ -33,7 +38,6 @@ public class BulletControl : MonoBehaviour
 
     void Score(int score)
     {
-        ScoreSystem = GameObject.Find("ScoreSystem");
         ScoreSystem.GetComponent<ScoreScript>().Score = score;
 
         Debug.Log(ScoreSystem.GetComponent<ScoreScript>().Score.ToString());
@@ -54,14 +58,42 @@ public class BulletControl : MonoBehaviour
             BulletHitSource.clip = hitWall;
             Destroy(coll.gameObject);
         }
-        else if (
-            coll.gameObject.tag == "T1Tank"
-         || coll.gameObject.tag == "T2Tank"
-         || coll.gameObject.tag == "T3Tank"
-         || coll.gameObject.tag == "T4Tank"
-         )
+        else if (coll.gameObject.tag == "T1Tank")
         {
             Score(100);
+            coll.gameObject.GetComponent<EnemyAI>().health--;
+
+            if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
+            {
+                BulletHitSource.clip = enemyDead;
+                Destroy(coll.gameObject);
+            }
+        }
+        else if (coll.gameObject.tag == "T2Tank")
+        {
+            Score(200);
+            coll.gameObject.GetComponent<EnemyAI>().health--;
+
+            if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
+            {
+                BulletHitSource.clip = enemyDead;
+                Destroy(coll.gameObject);
+            }
+        }
+        else if (coll.gameObject.tag == "T3Tank")
+        {
+            Score(300);
+            coll.gameObject.GetComponent<EnemyAI>().health--;
+
+            if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
+            {
+                BulletHitSource.clip = enemyDead;
+                Destroy(coll.gameObject);
+            }
+        }
+        else if( coll.gameObject.tag == "T4Tank")
+        {
+            Score(400);
             coll.gameObject.GetComponent<EnemyAI>().health--;
 
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
@@ -73,7 +105,7 @@ public class BulletControl : MonoBehaviour
         else if(coll.gameObject.tag == "BaseBlock")
         {
             BulletHitSource.clip = baseDead;
-            Destroy(coll.gameObject);
+            coll.gameObject.GetComponent<SpriteRenderer>().sprite = DeadBase;
         }
         GameObject[] playerTank = GameObject.FindGameObjectsWithTag("Player_Tank");
 
