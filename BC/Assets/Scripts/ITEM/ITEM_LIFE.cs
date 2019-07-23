@@ -18,9 +18,15 @@ public class ITEM_LIFE : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Player_Tank")
+        if (collision.gameObject.name == "Player1")
         {
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameItemControl>().Player_Life +=1;
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameItemControl>().Player1_Life += 1;
+
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.name == "Player2")
+        {
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameItemControl>().Player2_Life += 1;
 
             Destroy(gameObject);
         }

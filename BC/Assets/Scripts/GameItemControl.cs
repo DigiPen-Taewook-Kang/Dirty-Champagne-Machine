@@ -16,11 +16,14 @@ public class GameItemControl : MonoBehaviour
     public GameObject Iron;
 
     //Life Control
-    public int Player_Life = 3;
+    public int Player1_Life = 3;
+    public int Player2_Life = 3;
 
     //Shield
-    public bool IsShieldOn;
-    public float ShieldTimer = 5f;
+    public bool IsShieldOn1;
+    public bool IsShieldOn2;
+    public float ShieldTimer1 = 5f;
+    public float ShieldTimer2 = 5f;
 
 
     //Star
@@ -39,7 +42,8 @@ public class GameItemControl : MonoBehaviour
     {
         IsFreezeOn = false;
         IsReinforceOn = false;
-        IsShieldOn = true;
+        IsShieldOn1 = true;
+        IsShieldOn2 = true;
 
         BTS = GameObject.FindGameObjectsWithTag("BaseBlock");
     }
@@ -49,11 +53,11 @@ public class GameItemControl : MonoBehaviour
     {
         Freeze();
         Reinforce();
-        //Shield();
+        Shield();
     }
-     void Reinforce()
+    void Reinforce()
     {
-        if(IsReinforceOn)
+        if (IsReinforceOn)
         {
 
             if (!loop)
@@ -75,7 +79,7 @@ public class GameItemControl : MonoBehaviour
                 ReinforceTimer = 5f;
             }
         }
-        else if(!IsReinforceOn)
+        else if (!IsReinforceOn)
         {
             tilemaker = 0; loop = false;
             GameObject[] IronBlock = GameObject.FindGameObjectsWithTag("BaseBlock_Reinforced");
@@ -89,7 +93,7 @@ public class GameItemControl : MonoBehaviour
 
                 //NormalWall.gameObject.tag = "BaseBlock";
 
-                
+
             }
 
         }
@@ -97,7 +101,7 @@ public class GameItemControl : MonoBehaviour
 
     }
 
-     void Freeze()
+    void Freeze()
     {
         if (IsFreezeOn)
         {
@@ -147,13 +151,12 @@ public class GameItemControl : MonoBehaviour
 
     }
 
-     void Shield()
+    void Shield()
     {
-        if (GameObject.FindGameObjectWithTag("Player_Tank"))
+        if (GameObject.Find("Player1"))
         {
-            if (IsShieldOn)
+            if (IsShieldOn1)
             {
-                
                 //if (GameObject.FindGameObjectWithTag("Player_Tank"))
                 //{
                 //    GameObject playerTank = GameObject.FindGameObjectWithTag("Player_Tank");
@@ -162,26 +165,48 @@ public class GameItemControl : MonoBehaviour
 
                 //}
 
-                ShieldTimer -= Time.deltaTime;
-                if (ShieldTimer < 0)
+                ShieldTimer1 -= Time.deltaTime;
+                if (ShieldTimer1 < 0)
                 {
-                    IsShieldOn = false;
-                    ShieldTimer = 5f;
+                    IsShieldOn1 = false;
+                    ShieldTimer1 = 5f;
                 }
             }
             else
             {
-
-
-                    GameObject.FindGameObjectWithTag("Player_Tank").GetComponent<Player_status>().ps_IsBarrierOn = false ;
-
-                
-
+                GameObject.FindGameObjectWithTag("Player_Tank").GetComponent<Player_status>().ps_IsBarrierOn = false;
             }
         }
 
+        if (GameObject.Find("Player2"))
+        {
+            if (IsShieldOn2)
+            {
+
+                //if (GameObject.FindGameObjectWithTag("Player_Tank"))
+                //{
+                //    GameObject playerTank = GameObject.FindGameObjectWithTag("Player_Tank");
+
+                //    playerTank.gameObject.tag = "Player_Tank_Invincible";
+
+                //}
+
+                ShieldTimer2 -= Time.deltaTime;
+                if (ShieldTimer2 < 0)
+                {
+                    IsShieldOn2 = false;
+                    ShieldTimer2 = 5f;
+                }
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Player_Tank").GetComponent<Player_status>().ps_IsBarrierOn = false;
+            }
+
+        }
     }
 }
+
 
 
 

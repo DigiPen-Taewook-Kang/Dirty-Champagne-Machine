@@ -17,13 +17,20 @@ public class ITEM_Shield : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (collision.collider.tag == "Player_Tank")
-        //{
-        //    GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameItemControl>().IsShieldOn = true;
+        if (collision.collider.name == "Player1")
+        {
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameItemControl>().IsShieldOn1 = true;
 
 
-        //    Destroy(gameObject);
-        //}
+            Destroy(gameObject);
+        }
+        if (collision.collider.name == "Player2")
+        {
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameItemControl>().IsShieldOn2 = true;
+
+
+            Destroy(gameObject);
+        }
 
     }
 }

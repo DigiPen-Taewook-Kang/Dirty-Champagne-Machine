@@ -24,7 +24,6 @@ public class EnemyBulletControl : MonoBehaviour
 
         if (coll.gameObject.tag == "WALL_normal" ||  coll.gameObject.tag == "BaseBlock")
         {
-            
             Destroy(coll.gameObject);
         }
 

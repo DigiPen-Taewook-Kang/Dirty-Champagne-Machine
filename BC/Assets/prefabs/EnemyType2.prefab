@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -9002556341701237284}
   - component: {fileID: 1035385310}
   - component: {fileID: 6456597693850559473}
+  - component: {fileID: 408876998568261144}
   m_Layer: 12
   m_Name: EnemyType2
   m_TagString: T2Tank
@@ -184,3 +185,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 200
   dir: 0
+--- !u!114 &408876998568261144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4434015593069011056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957c8d218e24d384ebfd85786e776f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 10
+  Gun: {fileID: 0}
+  projectile: {fileID: 5557802384693959377, guid: 4dc320f6041616f4a82039dc5f9b961f,
+    type: 3}
+  IsBulletAlive: 0

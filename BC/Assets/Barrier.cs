@@ -6,15 +6,11 @@ public class Barrier : MonoBehaviour
 {
     Animator m_Animator;
     SpriteRenderer m_SpriteRenderer;
-
-    public Rigidbody2D barrier;
     public int playerNum;
 
     public bool isActivated = true;
     public float timer = 5.0f;
     public bool isTimerOn = true;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +35,10 @@ public class Barrier : MonoBehaviour
                     timer = 5.0f;
                 }
 
-                transform.position = playerNum == 1 ? GameObject.Find("Player1").transform.position : GameObject.Find("Player2").transform.position;
+                if (playerNum == 1 && GameObject.Find("Player1"))
+                    transform.position = GameObject.Find("Player1").transform.position;
+                else if (playerNum == 2 && GameObject.Find("Player2"))
+                    transform.position = GameObject.Find("Player2").transform.position;
             }
 
             if (!isTimerOn)

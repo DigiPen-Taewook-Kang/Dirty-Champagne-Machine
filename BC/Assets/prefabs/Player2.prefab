@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c6c38574055b643acf602033083d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNum: 2
   HP: 1
   StarLevel: 0
   ps_IsBarrierOn: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player_status : MonoBehaviour
 {
+    public int playerNum;
     [SerializeField]
     private int HP;
     [SerializeField]
@@ -33,8 +34,10 @@ public class Player_status : MonoBehaviour
         if (HP <= 0)
         {
             Destroy(gameObject);
-            gameController.GetComponent<GameItemControl>().IsShieldOn = true;
-
+            if(playerNum == 1)
+                gameController.GetComponent<GameItemControl>().IsShieldOn1 = true;
+            else
+                gameController.GetComponent<GameItemControl>().IsShieldOn2 = true;
         }
 
         //barrier start
@@ -69,10 +72,6 @@ public class Player_status : MonoBehaviour
             //double shot + penetrate Iron.
 
         }
-
-
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

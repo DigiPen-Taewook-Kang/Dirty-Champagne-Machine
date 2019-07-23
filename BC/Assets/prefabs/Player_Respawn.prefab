@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
-  player: {fileID: 1885611383403945364, guid: a54f91c3ef8c454448d7e5bfb49cc920, type: 3}
+  player1: {fileID: 1885611383403945391, guid: a54f91c3ef8c454448d7e5bfb49cc920, type: 3}
+  player2: {fileID: 7001150069822235751, guid: 2109685e8df053946b3e1d9bbd27445a, type: 3}

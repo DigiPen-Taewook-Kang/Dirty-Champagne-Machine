@@ -21,10 +21,10 @@ public class Respawn_player : MonoBehaviour
     {
         if (!GameObject.Find("Player1"))
         {
-            if (gameController.GetComponent<GameItemControl>().Player_Life > 0)
+            if (gameController.GetComponent<GameItemControl>().Player1_Life > 0)
             {
                 Rigidbody2D newPlayer = Instantiate(player1, new Vector3(-3, -1, 0), Quaternion.identity);
-                gameController.GetComponent<GameItemControl>().Player_Life -= 1;
+                gameController.GetComponent<GameItemControl>().Player1_Life -= 1;
                 newPlayer.name = "Player1";
             }
         }
@@ -32,10 +32,10 @@ public class Respawn_player : MonoBehaviour
         {
             if (!GameObject.Find("Player2"))
             {
-                if (gameController.GetComponent<GameItemControl>().Player_Life > 0)
+                if (gameController.GetComponent<GameItemControl>().Player2_Life > 0)
                 {
                     Rigidbody2D newPlayer = Instantiate(player2, new Vector3(5, -1, 0), Quaternion.identity);
-                    gameController.GetComponent<GameItemControl>().Player_Life -= 1;
+                    gameController.GetComponent<GameItemControl>().Player2_Life -= 1;
                     newPlayer.name = "Player2";
                 }
             }
