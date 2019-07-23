@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 404002326}
   - component: {fileID: 5395025114821912098}
   - component: {fileID: 4874525477276570362}
+  - component: {fileID: 9025615186740756509}
   m_Layer: 12
   m_Name: EnemyType3
-  m_TagString: T3Tank
+  m_TagString: T4Tank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,3 +203,16 @@ MonoBehaviour:
   projectile: {fileID: 5557802384693959377, guid: 4dc320f6041616f4a82039dc5f9b961f,
     type: 3}
   IsBulletAlive: 0
+--- !u!114 &9025615186740756509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410877897345621073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31bee65b10235fa4aa2ed3f0aa2ab9d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HadItem: 0

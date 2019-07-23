@@ -37,6 +37,8 @@ public class SceneHandler : MonoBehaviour
         // cngn Stage emdfmf Layer fh qusrud. 
         if (SceneManager.GetActiveScene().name == "Stage1")
         {
+
+
             //// # game clear condition # ////
             if (Input.GetKeyDown("c"))
             {
@@ -47,7 +49,6 @@ public class SceneHandler : MonoBehaviour
             if (isGameOver || isGameClear)
             {
                 timer -= Time.deltaTime;
-
                 if (timer <= 0)
                 {
                     //Stage1 -> Score -> NextStage or Mainmenu
@@ -68,7 +69,7 @@ public class SceneHandler : MonoBehaviour
             {
                 if (isGameOver == false) // go nextStage
                 {
-                    StageNumbChanger.stageChangeFlag = true;
+                    StageNumbChanger.stageChangeFlag = true; // stage++
                     SceneManager.LoadScene("CurStage");
                 }
                 else if (isGameOver == true) // print gameover and go mainmenu

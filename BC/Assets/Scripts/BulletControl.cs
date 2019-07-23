@@ -10,51 +10,56 @@ public class BulletControl : MonoBehaviour
     public AudioClip baseDead;
     public AudioClip hitWall;
     private AudioSource BulletHitSource;
-    private Vector3 spawn_pos;
 
-    public GameObject gameManager;
+    //public GameObject gameManager;
     public GameObject bullet_explosion;
-    public Rigidbody2D test;
-    
+    //public Rigidbody2D test;
+
+
+    List<GameObject> items = new List<GameObject>();
+    public GameObject Item1;
+    public GameObject Item2;
+    public GameObject Item3;
+    public GameObject Item4;
+    public GameObject Item5;
+    public GameObject Item6;
+
+    private int randomindex;
+
+    private int randomX;
+    private int randomY;
+    private Transform rota;
+
+
     // Start is called before the first frame update
     void Start()
     {
         BulletHitSource = GameObject.Find("Bullet Hit Source").GetComponent<AudioSource>();
         BulletHitSource.clip = strongWall;
+        items.Add(Item1);
+        items.Add(Item2);
+        items.Add(Item3);
+        items.Add(Item4);
+        items.Add(Item5);
+        items.Add(Item6);
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
+
+
     }
 
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        //var dir = (int)GameObject.Find("Player").GetComponent<Movement>().dir;
-        //if (dir == 1 || dir == 2)
-        //{
-        //    spawn_pos.x = (gameObject.transform.position.x + coll.transform.position.x) / 2;
-        //    spawn_pos.y = transform.position.y;
-        //    spawn_pos.z = transform.position.z + 2;
-        //}
-        //else if(dir == 3 || dir == 4)
-        //{
-        //    spawn_pos.x = transform.position.x;
-        //    spawn_pos.y = (gameObject.transform.position.y + coll.transform.position.y) / 2;
-        //    spawn_pos.z = transform.position.z + 2;
-        //}
-        //else
-        //{
-           
-        //}
-        spawn_pos = transform.position;
-
-        var check = Instantiate(bullet_explosion, spawn_pos, gameObject.transform.rotation);
+        var check = Instantiate(bullet_explosion, transform.position, gameObject.transform.rotation);
         check.GetComponent<Animator>().enabled = true;
         Destroy(check, 0.5f);
-
 
         if (coll.gameObject.tag == "WALL")
         {
@@ -74,13 +79,29 @@ public class BulletControl : MonoBehaviour
         {
             coll.gameObject.GetComponent<EnemyAI>().health--;
 
+            if (coll.gameObject.GetComponent<EnemySpawnItem>().HadItem)
+            {
+                randomindex = Random.Range(0, 6);
+                randomX = Random.Range(-11, 13);
+                randomY = Random.Range(2, 22);
+
+                Instantiate(items[randomindex], new Vector3(randomX, randomY, 1.5f), Quaternion.identity);
+            }
+
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
             {
                 BulletHitSource.clip = enemyDead;
                 Destroy(coll.gameObject);
+
+                //Game clear Check
+                IngameUIController.leftEnemyReal--;
+                if (IngameUIController.leftEnemyReal <= 0)
+                {
+                    SceneHandler.isGameClear = true;
+                }
             }
         }
-        else if(coll.gameObject.tag == "BaseBlock")
+        else if (coll.gameObject.tag == "BaseBlock")
         {
             BulletHitSource.clip = baseDead;
             Destroy(coll.gameObject);

@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
     public int health = 1;
 
     public bool isFreezeOn = false;
+    public bool isBombItemOn;// = false;
 
     List<Vector2> direction = new List<Vector2>();
 
@@ -95,6 +96,16 @@ public class EnemyAI : MonoBehaviour
                 timer = 3.0f;
                 RandomDirection();
             }
+        }
+
+        if (isBombItemOn)
+        {
+            var check = Instantiate(tank_explosion, gameObject.transform.position, gameObject.transform.rotation);
+            check.GetComponent<Animator>().enabled = true;
+
+
+            Destroy(check, 0.7f);
+            Destroy(gameObject);
         }
     }
 }

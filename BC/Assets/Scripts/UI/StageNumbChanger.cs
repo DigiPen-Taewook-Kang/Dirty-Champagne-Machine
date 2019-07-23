@@ -6,29 +6,31 @@ using UnityEngine.SceneManagement;
 
 public class StageNumbChanger : MonoBehaviour
 {
-    GameObject StageObj;
     Text stage;
     static public bool stageChangeFlag;
 
     // Start is called before the first frame update
     private void Start()
     {
-        StageObj = GameObject.Find("StageNumb");
-        //stageNumb = GetComponentInChildren<Text>();
-        stage = StageObj.GetComponent<Text>();
+        
+        stage = GameObject.Find("Stage").GetComponent<Text>();
+        //Debug.Log("NowStageinNumbChanger >> " + MainmenuController.curStage);
+        //Debug.Log("stageChangeFlag >> " + StageNumbChanger.stageChangeFlag);
+        StageNumbChanger.stageChangeFlag = true;
+        stage.text = "STAGE " + MainmenuController.curStage;
     }
 
     // Update is called once per frame
     void Update()
     {
-       // Debug.Log("?");
         
         if (stageChangeFlag == true)
         {
+            //Debug.Log("Stage change");
             stageChangeFlag = false;
-            
+            //Debug.Log("Before >> " + MainmenuController.curStage);
             MainmenuController.curStage = MainmenuController.curStage + 1;
-            
+            //Debug.Log("After >> " + MainmenuController.curStage);
             stage.text = "STAGE " + MainmenuController.curStage;
 
         }

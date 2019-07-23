@@ -21,6 +21,9 @@ public class MainmenuController : MonoBehaviour
 
     static public int curStage;
 
+    private void Awake()
+    {
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +53,6 @@ public class MainmenuController : MonoBehaviour
             // selected tab start -> mode set & scene change
             if (curSelect == 0) // single mode
             {
-                curStage = 0;
                 SceneManager.LoadScene("CurStage");
             }
         }

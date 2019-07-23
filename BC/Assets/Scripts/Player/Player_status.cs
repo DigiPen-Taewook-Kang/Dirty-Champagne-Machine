@@ -59,15 +59,17 @@ public class Player_status : MonoBehaviour
         }
 
         //Star Level
-        if(StarLevel ==1)
+        if (StarLevel == 1)
         {
-            gameObject.GetComponent<PlayerFireControl>().bulletSpeed = 25;
+            gameObject.GetComponent<PlayerFireControl>().bulletSpeed = 30;
         }
-        else if(StarLevel == 2)
+        else if (StarLevel == 2)
         {
-           //double shot
+            //double shot
+
+            PlayerFireControl.doubleShotActive = true;
         }
-        else if(StarLevel == 3)
+        else if (StarLevel == 3)
         {
             //double shot + penetrate Iron.
 

@@ -23,18 +23,44 @@ public class ITEM_Bomb : MonoBehaviour
             GameObject[] T2 = GameObject.FindGameObjectsWithTag("T2Tank");
             GameObject[] T3 = GameObject.FindGameObjectsWithTag("T3Tank");
             GameObject[] T4 = GameObject.FindGameObjectsWithTag("T4Tank");
+            int destroyCount = 0;
 
             foreach (GameObject tank1 in T1)
             {
-
-                Destroy(tank1);
+                tank1.GetComponent<EnemyAI>().isBombItemOn = true;
+                //Destroy(tank1);
+                destroyCount++;
             }
             foreach (GameObject tank2 in T2)
-                Destroy(tank2);
+            {
+                tank2.GetComponent<EnemyAI>().isBombItemOn = true;
+                //Destroy(tank2);
+                destroyCount++;
+
+
+            }
             foreach (GameObject tank3 in T3)
-                Destroy(tank3);
+            {
+                tank3.GetComponent<EnemyAI>().isBombItemOn = true;
+                //Destroy(tank3);
+                destroyCount++;
+            }
             foreach (GameObject tank4 in T4)
-                Destroy(tank4);
+            {
+                tank4.GetComponent<EnemyAI>().isBombItemOn = true;
+                //Destroy(tank4);
+                destroyCount++;
+            }
+
+
+            IngameUIController.leftEnemyReal -= destroyCount;
+
+            if(IngameUIController.leftEnemyReal <= 0)
+            {
+                SceneHandler.isGameClear = true;
+            }
+
+
 
             Destroy(gameObject);
         }

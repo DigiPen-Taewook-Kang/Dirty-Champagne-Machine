@@ -6,41 +6,59 @@ using UnityEngine.UI;
 public class IngameUIController : MonoBehaviour
 {
     public GameObject[] leftEnemyIcon;
-    public int leftEnemyCount; // 20
-
+    static public int leftEnemyCount; // 20. icon counter
+    static public int leftEnemyReal; // left Enemy on field.
+    int curLife;
+    Text lifeTmp;
     Text stage;
+
+
+    private void Awake()
+    {
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        leftEnemyCount = 20;
-        //stage = GameObject.Find("curStage").GetComponent<Text>();
-        
-        //stage.text = "" + MainmenuController.curStage;
+        leftEnemyCount = 20; // 20
+        leftEnemyReal = leftEnemyCount;
+
+        lifeTmp = GameObject.Find("life").GetComponent<Text>();
+        stage = GameObject.Find("curStage").GetComponent<Text>();
+
+        curLife = GameObject.Find("GameManager").GetComponent<GameItemControl>().Player1_Life;
+        lifeTmp.text = "" + curLife;
+        stage.text = "" + MainmenuController.curStage;
+        //Debug.Log("curStage >>" + MainmenuController.curStage);
     }
+
+    
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Mainmenu >> " + MainmenuController.curStage);
-        //Debug.Log("curStage >> " + stage.text);
+         ///// Left player life value change with respawn is better /////
+        if(curLife != GameObject.Find("GameManager").GetComponent<GameItemControl>().Player1_Life)
+        {
+            curLife = GameObject.Find("GameManager").GetComponent<GameItemControl>().Player1_Life;
+            lifeTmp.text = "" + curLife;
+        }
+        /////
 
+        
     }
 
-    //public int getLeftEnemy()
-    //{
-    //    return leftEnemyCount;
-    //}
 
     public void EnemyDestroy()
     {
-       // leftEnemyCount = leftEnemyCount - 1;
 
         Destroy(leftEnemyIcon[--leftEnemyCount]);
 
+        /*
         if(leftEnemyCount == 0)
         {
             SceneHandler.isGameClear = true;
         }
+        */
     }
 }

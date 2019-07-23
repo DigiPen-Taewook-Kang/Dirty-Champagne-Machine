@@ -23,6 +23,9 @@ public class PlayerFireControl : MonoBehaviour
     private string myBullet;
 
 
+    static public bool doubleShotActive = false;
+    private int doubleshotCount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,9 @@ public class PlayerFireControl : MonoBehaviour
         bulletSpeed = 20f;
         FireDirection = new Vector3(0, 1, 0);
         IsBulletAlive = false;
+
+        doubleShotActive = false;
+        doubleshotCount = 0;
     }
 
     // Update is called once per frame
@@ -67,6 +73,16 @@ public class PlayerFireControl : MonoBehaviour
         bulletInstance.velocity = transform.up * bulletSpeed;
         bulletInstance.name += name;
         myBullet = bulletInstance.name;
-        IsBulletAlive = true;
+        if (!doubleShotActive)
+            IsBulletAlive = true;
+        else
+        {
+            doubleshotCount++;
+            if (doubleshotCount >= 2)
+            {
+                IsBulletAlive = true;
+                doubleshotCount = 0;
+            }
+        }
     }
 }
