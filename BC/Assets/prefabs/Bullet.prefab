@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11377a1c726ca4c4eb12649c8569abfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeadBase: {fileID: 21300000, guid: 730d0dc63a9ce3a4e8c7b1977a8a31f8, type: 3}
   strongWall: {fileID: 8300000, guid: da7e04ee7ea0aa94b8a6c0622032d73f, type: 3}
   enemyDead: {fileID: 8300000, guid: 2fb7ced403ba464448cd6611188dd07b, type: 3}
   baseDead: {fileID: 8300000, guid: e8bf544d6417a964ba55a95e93c91b6c, type: 3}
@@ -102,6 +103,7 @@ MonoBehaviour:
   bullet_explosion: {fileID: 5641429658502384717, guid: 87067c57614527a42b33e0016af99c2f,
     type: 3}
   test: {fileID: 0}
+  ScoreSystem: {fileID: 0}
 --- !u!50 &8781170477996231766
 Rigidbody2D:
   serializedVersion: 4

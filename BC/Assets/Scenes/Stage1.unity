@@ -690,7 +690,7 @@ PrefabInstance:
     - target: {fileID: 4683766383878318313, guid: 6fd744088e34dad419b934bdb79cb531,
         type: 3}
       propertyPath: m_TagString
-      value: WALL_normal
+      value: BaseBlock
       objectReference: {fileID: 0}
     - target: {fileID: 4683766383878318293, guid: 6fd744088e34dad419b934bdb79cb531,
         type: 3}
@@ -1513,6 +1513,7 @@ GameObject:
   - component: {fileID: 357207547}
   - component: {fileID: 357207546}
   - component: {fileID: 357207549}
+  - component: {fileID: 357207550}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1604,6 +1605,18 @@ MonoBehaviour:
   Enemy_t3: {fileID: 0}
   Enemy_t4: {fileID: 0}
   gameManager: {fileID: 1882081455}
+--- !u!114 &357207550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357207545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61514d826b4ef9b4a8d6fdb2be70dd56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &366089716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8990796179911384230, guid: 231cf04b3297e4148af2c8184b44aa94,

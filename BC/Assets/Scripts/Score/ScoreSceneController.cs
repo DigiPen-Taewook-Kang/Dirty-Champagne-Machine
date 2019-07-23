@@ -28,18 +28,13 @@ public class ScoreSceneController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        // Debug::: Set the arbitary values
-        score = 100;
-        highScore = 200;
-        tankData = new int[4] { 2, 1, 3, 2 };
-
         // Get a Score & high score
         ScoreScript tmp = scoreSystem.GetComponent<ScoreScript>();
-        score = tmp.TransferedScore;
+        score = tmp.Score;
         highScore = tmp.HighScore;
-        for (int i = 0; i < tmp.SavedTank.Length; ++i)
+        for (int i = 0; i < tmp.KilledTank.Length; ++i)
         {
-            tankData[i] = tmp.SavedTank[i];
+            tankData[i] = tmp.KilledTank[i];
         }
 
         // Set Init Values
@@ -49,19 +44,18 @@ public class ScoreSceneController : MonoBehaviour
         GameObject.Find("HI-SCORE").GetComponent<Text>().text = highScore.ToString();
         GameObject.Find("I-SCORE").GetComponent<Text>().text = score.ToString();
 
-
-
-        // DEBUG ///////////////////////////////////////////////////////////
-        tankData[0] = 1;
-        tankData[1] = 1;
-        tankData[2] = 1;
-        tankData[3] = 1;
-        ///////////////////
-
         currScore = 0;
         compareScore = tankData[0];
         nextTime = 1f;
         time = 0f;
+
+        tmp.Score = 0;
+        // Clean Up Score Vars
+        scoreSystem.GetComponent<ScoreScript>().Score = 0;
+        for(int i = 0; i < 4; ++i)
+        {
+            scoreSystem.GetComponent<ScoreScript>().KilledTank[i] = 0;
+        }
     }
 
     // Update is called once per frame
@@ -69,8 +63,13 @@ public class ScoreSceneController : MonoBehaviour
     {
         time += Time.deltaTime;
 
+        // waiting for 1sec
         if (time > nextTime)
         {
+            if(tankIndex >= 4)
+            {
+                // Code for get out from score scene
+            }
             time = 0;
             currScore++;
             if (currScore > compareScore)
@@ -79,6 +78,7 @@ public class ScoreSceneController : MonoBehaviour
                 compareScore = tankData[(++tankIndex)%4];
             }
             EnemyCount[tankIndex % 4].text = currScore.ToString();
+
         }
     }
 }
