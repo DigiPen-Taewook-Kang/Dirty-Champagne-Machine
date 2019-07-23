@@ -22,21 +22,11 @@ public class ScoreScript : MonoBehaviour
         {
             highScore = score;
         }
-
-
-        //// Reset Score
-        //score = 0;
-
-        //// Reset enemy tanks were killed
-        //for(int i = 0; i<killedTank.Length; i++)
-        //{
-        //    killedTank[i] = 0;
-        //}
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(score.ToString());
+        Debug.Log(score.ToString());
     }
 }
