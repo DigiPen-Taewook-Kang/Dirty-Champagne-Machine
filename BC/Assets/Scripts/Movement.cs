@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public int playerNum;
     public float speed;
 
     private DIRECTION dir = 0;
@@ -54,45 +55,91 @@ public class Movement : MonoBehaviour
 
     private void GetDirection()
     {
-        if (Input.GetKey("left"))
+        if (playerNum == 1)
         {
-            if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+            if (Input.GetKey("left"))
             {
-                dir = DIRECTION.LEFT;
-            }
-            gameObject.transform.up = Quaternion.Euler(0, 0, 90) * Vector3.up;
+                if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+                {
+                    dir = DIRECTION.LEFT;
+                }
+                gameObject.transform.up = Quaternion.Euler(0, 0, 90) * Vector3.up;
 
-        }
-        else if (Input.GetKey("right"))
-        {
-            if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
-            {
-                dir = DIRECTION.RIGHT;
             }
-            gameObject.transform.up = Quaternion.Euler(0, 0, -90) * Vector3.up;
-
-        }
-        else if (Input.GetKey("up"))
-        {
-            gameObject.transform.up = Quaternion.Euler(0, 0, 0) * Vector3.up;
-            if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+            else if (Input.GetKey("right"))
             {
-                dir = DIRECTION.UP;
+                if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+                {
+                    dir = DIRECTION.RIGHT;
+                }
+                gameObject.transform.up = Quaternion.Euler(0, 0, -90) * Vector3.up;
+
             }
-
-        }
-        else if (Input.GetKey("down"))
-        {
-            gameObject.transform.up = Quaternion.Euler(0, 0, 180) * Vector3.up;
-            if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+            else if (Input.GetKey("up"))
             {
-                dir = DIRECTION.DOWN;
+                gameObject.transform.up = Quaternion.Euler(0, 0, 0) * Vector3.up;
+                if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+                {
+                    dir = DIRECTION.UP;
+                }
+
+            }
+            else if (Input.GetKey("down"))
+            {
+                gameObject.transform.up = Quaternion.Euler(0, 0, 180) * Vector3.up;
+                if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+                {
+                    dir = DIRECTION.DOWN;
+                }
+            }
+            else
+            {
+                dir = DIRECTION.NONE;
+                transform.position = new Vector3(Round1D(transform.position.x), Round1D(transform.position.y), 0);
             }
         }
         else
         {
-            dir = DIRECTION.NONE;
-            transform.position = new Vector3(Round1D(transform.position.x), Round1D(transform.position.y), 0);
+            if (Input.GetKey(KeyCode.Keypad4))
+            {
+                if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+                {
+                    dir = DIRECTION.LEFT;
+                }
+                gameObject.transform.up = Quaternion.Euler(0, 0, 90) * Vector3.up;
+
+            }
+            else if (Input.GetKey(KeyCode.Keypad6))
+            {
+                if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+                {
+                    dir = DIRECTION.RIGHT;
+                }
+                gameObject.transform.up = Quaternion.Euler(0, 0, -90) * Vector3.up;
+
+            }
+            else if (Input.GetKey(KeyCode.Keypad8))
+            {
+                gameObject.transform.up = Quaternion.Euler(0, 0, 0) * Vector3.up;
+                if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+                {
+                    dir = DIRECTION.UP;
+                }
+
+            }
+            else if (Input.GetKey(KeyCode.Keypad2))
+            {
+                gameObject.transform.up = Quaternion.Euler(0, 0, 180) * Vector3.up;
+                if (transform.GetChild(0).GetComponent<CheckCollide>().IsCollide == false)
+                {
+                    dir = DIRECTION.DOWN;
+                }
+            }
+            else
+            {
+                dir = DIRECTION.NONE;
+                transform.position = new Vector3(Round1D(transform.position.x), Round1D(transform.position.y), 0);
+            }
         }
     }
 
@@ -105,8 +152,12 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
+        idleClip = Resources.Load<AudioClip>("Audio Assets/SFX/Idle_Final");
+        moveClip = Resources.Load<AudioClip>("Audio Assets/SFX/Move_Final");
+        PlayerMovementAudioSource = GameObject.Find("Player Movement Source").GetComponent<AudioSource>();
+
         // Init Sound Vars
-        if(PlayerMovementAudioSource)
+        if (PlayerMovementAudioSource)
         {
             PlayerMovementAudioSource.clip = idleClip;
             PlayerMovementAudioSource.Play();

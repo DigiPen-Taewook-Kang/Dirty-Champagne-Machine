@@ -38,12 +38,9 @@ public class BulletControl : MonoBehaviour
 
     void Score(int score)
     {
-        ScoreSystem.GetComponent<ScoreScript>().Score += score;
-    }
+        ScoreSystem.GetComponent<ScoreScript>().Score = score;
 
-    void KillTank(int num)
-    {
-        ++ScoreSystem.GetComponent<ScoreScript>().KilledTank[num - 1];
+        Debug.Log(ScoreSystem.GetComponent<ScoreScript>().Score.ToString());
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
@@ -64,7 +61,6 @@ public class BulletControl : MonoBehaviour
         else if (coll.gameObject.tag == "T1Tank")
         {
             Score(100);
-            KillTank(1);
             coll.gameObject.GetComponent<EnemyAI>().health--;
 
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
@@ -76,7 +72,6 @@ public class BulletControl : MonoBehaviour
         else if (coll.gameObject.tag == "T2Tank")
         {
             Score(200);
-            KillTank(2);
             coll.gameObject.GetComponent<EnemyAI>().health--;
 
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
@@ -88,7 +83,6 @@ public class BulletControl : MonoBehaviour
         else if (coll.gameObject.tag == "T3Tank")
         {
             Score(300);
-            KillTank(3);
             coll.gameObject.GetComponent<EnemyAI>().health--;
 
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
@@ -100,7 +94,6 @@ public class BulletControl : MonoBehaviour
         else if( coll.gameObject.tag == "T4Tank")
         {
             Score(400);
-            KillTank(4);
             coll.gameObject.GetComponent<EnemyAI>().health--;
 
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
@@ -113,11 +106,7 @@ public class BulletControl : MonoBehaviour
         {
             BulletHitSource.clip = baseDead;
             coll.gameObject.GetComponent<SpriteRenderer>().sprite = DeadBase;
-            SceneHandler.isGameOver = true;
         }
-        GameObject[] playerTank = GameObject.FindGameObjectsWithTag("Player_Tank");
-
-        playerTank[0].GetComponent<PlayerFireControl>().IsBulletAlive = false;
 
         Destroy(gameObject);
 

@@ -17,6 +17,7 @@ public class MainmenuSelector : MonoBehaviour
     int curSelect = 0; // 0: single mode 1: multi mode 2: construction
     public GameObject icon;
     public GameObject[] tab;
+    static public int mode;
 
     // Start is called before the first frame update
     void Start()
@@ -44,9 +45,10 @@ public class MainmenuSelector : MonoBehaviour
         {
             // selected tab start -> mode set & scene change
             if (curSelect == 0) // single mode
-            {
-                SceneManager.LoadScene("CurStage");
-            }
+                mode = 1;
+            else
+                mode = 2;
+            SceneManager.LoadScene("CurStage");
         }
     }
 

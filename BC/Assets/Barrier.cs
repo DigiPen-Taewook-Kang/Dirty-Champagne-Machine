@@ -7,11 +7,14 @@ public class Barrier : MonoBehaviour
     Animator m_Animator;
     SpriteRenderer m_SpriteRenderer;
 
+    public Rigidbody2D barrier;
+    public int playerNum;
+
     public bool isActivated = true;
     public float timer = 5.0f;
     public bool isTimerOn = true;
 
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +26,8 @@ public class Barrier : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (GameObject.FindGameObjectWithTag("Player_Tank"))
         {
-
-
             if (isTimerOn)
             {
                 TriggerTimer();
@@ -39,20 +39,15 @@ public class Barrier : MonoBehaviour
                     timer = 5.0f;
                 }
 
-                transform.position = GameObject.FindGameObjectWithTag("Player_Tank").transform.position;
+                transform.position = playerNum == 1 ? GameObject.Find("Player1").transform.position : GameObject.Find("Player2").transform.position;
             }
 
             if (!isTimerOn)
             {
                 m_SpriteRenderer.enabled = false;
                 m_Animator.enabled = false;
-
             }
-
-
         }
-
-        
     }
 
     public void TriggerTimer()
@@ -61,6 +56,6 @@ public class Barrier : MonoBehaviour
         isTimerOn = true;
         m_Animator.enabled = true;
         m_SpriteRenderer.enabled = true;
-       
+
     }
 }
