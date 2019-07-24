@@ -319,8 +319,9 @@ MonoBehaviour:
   Gun: {fileID: 3979138719236317285}
   projectile: {fileID: 8781170477996231766, guid: e4ee469609e131841b13ebce4e4c530a,
     type: 3}
-  shotSoundClip: {fileID: 0}
-  shotSource: {fileID: 0}
+  shotSoundClip: {fileID: 8300000, guid: d80b6c1063339e44a854f96eb2c83934, type: 3}
+  shotSource: {fileID: 5954706360676538960, guid: 78b3e55797c7f764da3172ce63358c9f,
+    type: 3}
   IsBulletAlive: 0
 --- !u!50 &1885611383403945391
 Rigidbody2D:
@@ -384,9 +385,10 @@ MonoBehaviour:
   playerNum: 1
   speed: 300
   isMoving: 0
-  idleClip: {fileID: 0}
-  moveClip: {fileID: 0}
-  PlayerMovementAudioSource: {fileID: 0}
+  idleClip: {fileID: 8300000, guid: 2bab468e2ec1f224bb46d708765a5c06, type: 3}
+  moveClip: {fileID: 8300000, guid: fc41037e0d72b2244af2ef19fc976ace, type: 3}
+  PlayerMovementAudioSource: {fileID: 8490292612926388180, guid: 156f73fc0160dce48b44477ae02f011f,
+    type: 3}
 --- !u!114 &224386924
 MonoBehaviour:
   m_ObjectHideFlags: 0

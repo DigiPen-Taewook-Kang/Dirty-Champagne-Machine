@@ -47,7 +47,6 @@ public class Movement : MonoBehaviour
                 {
                     dir = DIRECTION.NONE;
                     transform.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
-                    isMoving = false;
                     break;
                 }
         }
@@ -152,8 +151,6 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        idleClip = Resources.Load<AudioClip>("Audio Assets/SFX/Idle_Final");
-        moveClip = Resources.Load<AudioClip>("Audio Assets/SFX/Move_Final");
         PlayerMovementAudioSource = GameObject.Find("Player Movement Source").GetComponent<AudioSource>();
 
         // Init Sound Vars
@@ -172,10 +169,14 @@ public class Movement : MonoBehaviour
     //calculations
     private void FixedUpdate()
     {
-        if (!isMoving)
-            GetDirection();
+        
+        // Check isMoving
+        float Velocity = GetComponent<Rigidbody2D>().velocity.magnitude;
+        isMoving = (Velocity >= -float.Epsilon && Velocity < float.Epsilon) ? false : true;
 
-        if(PlayerMovementAudioSource)
+        GetDirection();
+           
+         if(PlayerMovementAudioSource)
         {
             PlayerMovementAudioSource.clip = (isMoving) ? moveClip : idleClip;
 

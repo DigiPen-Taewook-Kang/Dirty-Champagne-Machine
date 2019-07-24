@@ -33,6 +33,9 @@ public class BulletControl : MonoBehaviour
     private Transform rota;
 
 
+    public GameObject ScoreSystem;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,6 +94,15 @@ public class BulletControl : MonoBehaviour
             KillTank(1);
             coll.gameObject.GetComponent<EnemyAI>().health--;
 
+            if (coll.gameObject.GetComponent<EnemySpawnItem>().HadItem)
+            {
+                randomindex = Random.Range(0, 6);
+                randomX = Random.Range(-11, 13);
+                randomY = Random.Range(2, 22);
+
+                Instantiate(items[randomindex], new Vector3(randomX, randomY, 1.5f), Quaternion.identity);
+            }
+
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
             {
                 BulletHitSource.clip = enemyDead;
@@ -103,6 +115,15 @@ public class BulletControl : MonoBehaviour
             KillTank(2);
             coll.gameObject.GetComponent<EnemyAI>().health--;
 
+            if (coll.gameObject.GetComponent<EnemySpawnItem>().HadItem)
+            {
+                randomindex = Random.Range(0, 6);
+                randomX = Random.Range(-11, 13);
+                randomY = Random.Range(2, 22);
+
+                Instantiate(items[randomindex], new Vector3(randomX, randomY, 1.5f), Quaternion.identity);
+            }
+
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
             {
                 BulletHitSource.clip = enemyDead;
@@ -114,6 +135,15 @@ public class BulletControl : MonoBehaviour
             Score(300);
             KillTank(3);
             coll.gameObject.GetComponent<EnemyAI>().health--;
+
+            if (coll.gameObject.GetComponent<EnemySpawnItem>().HadItem)
+            {
+                randomindex = Random.Range(0, 6);
+                randomX = Random.Range(-11, 13);
+                randomY = Random.Range(2, 22);
+
+                Instantiate(items[randomindex], new Vector3(randomX, randomY, 1.5f), Quaternion.identity);
+            }
 
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
             {

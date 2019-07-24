@@ -26,6 +26,7 @@ public class ITEM_LIFE : MonoBehaviour
         }
         else if (collision.gameObject.name == "Player2")
         {
+            print("23");
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameItemControl>().Player2_Life += 1;
 
             Destroy(gameObject);
