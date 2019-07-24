@@ -393,6 +393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa1ae25faacbd549be1e27c28dbe6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyCount: []
+  stage: {fileID: 594044540}
+  scoreSystem: {fileID: 0}
+  tankData: 00000000000000000000000000000000
 --- !u!1 &225349169
 GameObject:
   m_ObjectHideFlags: 0

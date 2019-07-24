@@ -52,6 +52,7 @@ public class Player_status : MonoBehaviour
                 ShieldTimer = 5f;
             }
         }
+
         // end
         else if(HP > 1)
         {

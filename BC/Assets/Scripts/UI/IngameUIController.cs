@@ -20,7 +20,7 @@ public class IngameUIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        leftEnemyCount = 20; // 20
+        leftEnemyCount = 5; // 20
         leftEnemyReal = leftEnemyCount;
 
         lifeTmp = GameObject.Find("life").GetComponent<Text>();
@@ -29,7 +29,6 @@ public class IngameUIController : MonoBehaviour
         curLife = GameObject.Find("GameManager").GetComponent<GameItemControl>().Player1_Life;
         lifeTmp.text = "" + curLife;
         stage.text = "" + MainmenuController.curStage;
-        //Debug.Log("curStage >>" + MainmenuController.curStage);
     }
 
     
@@ -37,6 +36,10 @@ public class IngameUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("leftEnemyCount >> " + leftEnemyCount);
+        //Debug.Log("leftEnemyReal >> " + leftEnemyReal);
+
+
          ///// Left player life value change with respawn is better /////
         if(curLife != GameObject.Find("GameManager").GetComponent<GameItemControl>().Player1_Life)
         {

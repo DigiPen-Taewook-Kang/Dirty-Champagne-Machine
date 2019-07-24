@@ -26,6 +26,8 @@ public class BulletControl : MonoBehaviour
     public GameObject Item5;
     public GameObject Item6;
 
+    public GameObject ScoreSystem; // 
+
     private int randomindex;
 
     private int randomX;
@@ -95,6 +97,13 @@ public class BulletControl : MonoBehaviour
             {
                 BulletHitSource.clip = enemyDead;
                 Destroy(coll.gameObject);
+
+                //Game clear Check
+                IngameUIController.leftEnemyReal--;
+                if (IngameUIController.leftEnemyReal <= 0)
+                {
+                    SceneHandler.isGameClear = true;
+                }
             }
         }
         else if (coll.gameObject.tag == "T2Tank")
@@ -107,6 +116,13 @@ public class BulletControl : MonoBehaviour
             {
                 BulletHitSource.clip = enemyDead;
                 Destroy(coll.gameObject);
+
+                //Game clear Check
+                IngameUIController.leftEnemyReal--;
+                if (IngameUIController.leftEnemyReal <= 0)
+                {
+                    SceneHandler.isGameClear = true;
+                }
             }
         }
         else if (coll.gameObject.tag == "T3Tank")
@@ -119,6 +135,13 @@ public class BulletControl : MonoBehaviour
             {
                 BulletHitSource.clip = enemyDead;
                 Destroy(coll.gameObject);
+
+                //Game clear Check
+                IngameUIController.leftEnemyReal--;
+                if (IngameUIController.leftEnemyReal <= 0)
+                {
+                    SceneHandler.isGameClear = true;
+                }
             }
         }
         else if( coll.gameObject.tag == "T4Tank")

@@ -3071,7 +3071,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 5
-  Enemy: {fileID: 2479231175215642761, guid: 212714bfa6ed97e4fb2e0fe533bf2ae3, type: 3}
+  Enemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!81 &588436087
 AudioListener:
   m_ObjectHideFlags: 0

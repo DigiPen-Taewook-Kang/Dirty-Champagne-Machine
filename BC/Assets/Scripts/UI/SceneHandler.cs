@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneHandler : MonoBehaviour
 {
+
     /*
      * 
      * Handle Scene List
@@ -35,7 +36,7 @@ public class SceneHandler : MonoBehaviour
     {
 
         // cngn Stage emdfmf Layer fh qusrud. 
-        if (SceneManager.GetActiveScene().name == "Stage1")
+        if (SceneManager.GetActiveScene().name == "Stage" + MainmenuController.curStage)
         {
 
 
@@ -63,12 +64,13 @@ public class SceneHandler : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "CurStage")
             {
-                SceneManager.LoadScene("Stage1");
+                SceneManager.LoadScene("Stage"+MainmenuController.curStage);
             }
             else if ( SceneManager.GetActiveScene().name == "Score")
             {
                 if (isGameOver == false) // go nextStage
                 {
+                    //MainmenuController.curStage++; // nextStage
                     StageNumbChanger.stageChangeFlag = true; // stage++
                     SceneManager.LoadScene("CurStage");
                 }

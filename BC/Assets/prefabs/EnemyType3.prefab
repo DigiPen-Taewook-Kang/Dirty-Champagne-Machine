@@ -165,8 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddeeee86dc804f40b7db2698fa3f447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 4
   isFreezeOn: 0
+  isBombItemOn: 0
   blockinglayer:
     serializedVersion: 2
     m_Bits: 0

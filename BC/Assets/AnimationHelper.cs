@@ -15,6 +15,7 @@ public class AnimationHelper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(gameObject.GetComponent<Movement>().isMoving)
         {
             m_Animator.enabled = true;

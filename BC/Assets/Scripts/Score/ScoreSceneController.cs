@@ -8,7 +8,8 @@ public class ScoreSceneController : MonoBehaviour
     // UI data
     GameObject StageObj;
     public List<Text> EnemyCount;
-    Text stage;
+    public Text stage;
+    //Text stage;
     static public bool stageChangeFlag;
 
     public GameObject scoreSystem;
@@ -38,9 +39,10 @@ public class ScoreSceneController : MonoBehaviour
         }
 
         // Set Init Values
-        StageObj = GameObject.Find("Stage");
-        stage = StageObj.GetComponent<Text>();
-        stage.text = "STAGE " + MainmenuController.curStage;
+        //StageObj = GameObject.Find("Stage");
+        //stage = StageObj.GetComponent<Text>();
+        stage = GameObject.Find("Stage").GetComponent<Text>();
+
         GameObject.Find("HI-SCORE").GetComponent<Text>().text = highScore.ToString();
         GameObject.Find("I-SCORE").GetComponent<Text>().text = score.ToString();
 
@@ -61,6 +63,11 @@ public class ScoreSceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        stage.text = "STAGE " + MainmenuController.curStage;
+        Debug.Log("curStage >> " + MainmenuController.curStage);
+
+
         time += Time.deltaTime;
 
         // waiting for 1sec
