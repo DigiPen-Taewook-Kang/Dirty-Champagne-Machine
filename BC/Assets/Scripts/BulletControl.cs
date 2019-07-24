@@ -30,8 +30,6 @@ public class BulletControl : MonoBehaviour
     public GameObject Item5;
     public GameObject Item6;
 
-    public GameObject ScoreSystem; // 
-
     private int randomindex;
 
     private int randomX;
