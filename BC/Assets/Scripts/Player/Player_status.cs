@@ -87,7 +87,10 @@ public class Player_status : MonoBehaviour
         if(collision.collider.tag == "ITEM_Shield")
         {
             ps_IsBarrierOn = true;
-            GameObject.FindGameObjectWithTag("Player_Shield").GetComponent<Barrier>().isTimerOn = true;
+            if(playerNum == 1)
+                GameObject.Find("Barrier1").GetComponent<Barrier>().isTimerOn = true;
+            else
+                GameObject.Find("Barrier2").GetComponent<Barrier>().isTimerOn = true;
             Destroy(collision.gameObject);
         }
 
