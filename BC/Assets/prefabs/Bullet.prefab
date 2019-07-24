@@ -100,6 +100,9 @@ MonoBehaviour:
   hitWall: {fileID: 8300000, guid: db09155263782c34e8a3a91102f29b0f, type: 3}
   bullet_explosion: {fileID: 5641429658502384717, guid: 87067c57614527a42b33e0016af99c2f,
     type: 3}
+  test: {fileID: 0}
+  ScoreSystem: {fileID: 7419872742994788694, guid: d3fd8b386998b334f850fc8139cb3d6d,
+    type: 3}
   Item1: {fileID: 4437081610847084714, guid: bd35b352fec6b9e4abaf707d1663130d, type: 3}
   Item2: {fileID: 2514732935591311608, guid: 23d624f899bc36a41a0b2dad48bede6f, type: 3}
   Item3: {fileID: 8990796179911384230, guid: 231cf04b3297e4148af2c8184b44aa94, type: 3}

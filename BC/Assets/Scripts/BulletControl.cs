@@ -17,6 +17,10 @@ public class BulletControl : MonoBehaviour
     public GameObject bullet_explosion;
     //public Rigidbody2D test;
 
+    public GameObject ScoreSystem;
+
+    public bool isPlayer2;
+    
 
     List<GameObject> items = new List<GameObject>();
     public GameObject Item1;
@@ -42,6 +46,10 @@ public class BulletControl : MonoBehaviour
         BulletHitSource = GameObject.Find("Bullet Hit Source").GetComponent<AudioSource>();
         BulletHitSource.clip = strongWall;
         // Init Score Systems
+        if(!ScoreSystem)
+        {
+            ScoreSystem = (isPlayer2)? GameObject.Find("ScoreSystem2Player"): GameObject.Find("ScoreSystem");
+        }
         ScoreSystem = GameObject.Find("ScoreSystem");
         items.Add(Item1);
         items.Add(Item2);
@@ -64,12 +72,26 @@ public class BulletControl : MonoBehaviour
 
     void Score(int score)
     {
-        ScoreSystem.GetComponent<ScoreScript>().Score += score;
+        if(isPlayer2)
+        {
+            ScoreSystem.GetComponent<ScoreScript2Player>().Score += score;
+        }
+        else
+        {
+            ScoreSystem.GetComponent<ScoreScript>().Score += score;
+        }
     }
 
     void KillTank(int num)
     {
-        ++ScoreSystem.GetComponent<ScoreScript>().KilledTank[num - 1];
+        if(isPlayer2)
+        {
+            ++ScoreSystem.GetComponent<ScoreScript2Player>().KilledTank[num - 1];
+        }
+        else
+        {
+            ++ScoreSystem.GetComponent<ScoreScript>().KilledTank[num - 1];
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D coll)
