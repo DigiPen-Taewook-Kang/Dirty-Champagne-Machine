@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ITEM_Bomb : MonoBehaviour
 {
+    [SerializeField]
+    GameObject Score500;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +64,7 @@ public class ITEM_Bomb : MonoBehaviour
             }
 
 
-
+            Instantiate(Score500,transform.position,transform.rotation);
             Destroy(gameObject);
         }
         

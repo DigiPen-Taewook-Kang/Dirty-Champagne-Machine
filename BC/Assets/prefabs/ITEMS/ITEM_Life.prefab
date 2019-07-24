@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8990796179911384251}
   - component: {fileID: 8990796179911384248}
   - component: {fileID: 8990796179911384249}
+  - component: {fileID: 1144316731}
   m_Layer: 15
   m_Name: ITEM_Life
   m_TagString: ITEMS
@@ -128,3 +129,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.65, y: 0.59}
   m_EdgeRadius: 0
+--- !u!114 &1144316731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990796179911384230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a2908956bb53f47911100e29ddf7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score500: {fileID: 932096484937805668, guid: 4ccf5bb46d154974cb1c5a92de87a074, type: 3}

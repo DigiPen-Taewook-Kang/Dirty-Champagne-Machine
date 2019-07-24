@@ -141,5 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f50d0e52e257749ae6df23e280625d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Score500: {fileID: 932096484937805668, guid: 4ccf5bb46d154974cb1c5a92de87a074, type: 3}
   gameController: {fileID: 1834273516146063993, guid: 65514fe2bfd6f7146ad84745c2685948,
     type: 3}

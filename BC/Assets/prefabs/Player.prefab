@@ -404,6 +404,7 @@ MonoBehaviour:
   playerNum: 1
   HP: 1
   StarLevel: 0
+  Score500: {fileID: 932096484937805668, guid: 4ccf5bb46d154974cb1c5a92de87a074, type: 3}
   ps_IsBarrierOn: 0
   ShieldTimer: 0
 --- !u!95 &527403870939102734

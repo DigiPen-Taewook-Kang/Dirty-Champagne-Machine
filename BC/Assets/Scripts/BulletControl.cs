@@ -18,6 +18,13 @@ public class BulletControl : MonoBehaviour
     //public Rigidbody2D test;
 
 
+    public GameObject Score100;
+    public GameObject Score200;
+    public GameObject Score300;
+    public GameObject Score400;
+
+
+
     List<GameObject> items = new List<GameObject>();
     public GameObject Item1;
     public GameObject Item2;
@@ -106,6 +113,15 @@ public class BulletControl : MonoBehaviour
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
             {
                 BulletHitSource.clip = enemyDead;
+
+
+                IngameUIController.leftEnemyReal--;
+                if (IngameUIController.leftEnemyReal <= 0)
+                {
+                    SceneHandler.isGameClear = true;
+                }
+
+                Instantiate(Score100, transform.position, Quaternion.identity);
                 Destroy(coll.gameObject);
             }
         }
@@ -127,6 +143,14 @@ public class BulletControl : MonoBehaviour
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
             {
                 BulletHitSource.clip = enemyDead;
+
+                IngameUIController.leftEnemyReal--;
+                if (IngameUIController.leftEnemyReal <= 0)
+                {
+                    SceneHandler.isGameClear = true;
+                }
+
+                Instantiate(Score200, transform.position, Quaternion.identity);
                 Destroy(coll.gameObject);
             }
         }
@@ -148,10 +172,18 @@ public class BulletControl : MonoBehaviour
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
             {
                 BulletHitSource.clip = enemyDead;
+
+                IngameUIController.leftEnemyReal--;
+                if (IngameUIController.leftEnemyReal <= 0)
+                {
+                    SceneHandler.isGameClear = true;
+                }
+
+                Instantiate(Score300, transform.position, Quaternion.identity);
                 Destroy(coll.gameObject);
             }
         }
-        else if( coll.gameObject.tag == "T4Tank")
+        else if (coll.gameObject.tag == "T4Tank")
         {
             Score(400);
             KillTank(4);
@@ -169,6 +201,8 @@ public class BulletControl : MonoBehaviour
             if (coll.gameObject.GetComponent<EnemyAI>().health <= 0)
             {
                 BulletHitSource.clip = enemyDead;
+
+                Instantiate(Score400, transform.position, Quaternion.identity);
                 Destroy(coll.gameObject);
 
                 //Game clear Check
@@ -185,10 +219,13 @@ public class BulletControl : MonoBehaviour
             coll.gameObject.GetComponent<SpriteRenderer>().sprite = DeadBase;
             SceneHandler.isGameOver = true;
         }
-        GameObject[] playerTank = GameObject.FindGameObjectsWithTag("Player_Tank");
 
-        playerTank[0].GetComponent<PlayerFireControl>().IsBulletAlive = false;
+        if (GameObject.FindGameObjectsWithTag("Player_Tank") != null)
+        {
+            GameObject[] playerTank = GameObject.FindGameObjectsWithTag("Player_Tank");
 
+            playerTank[0].GetComponent<PlayerFireControl>().IsBulletAlive = false;
+        }
         Destroy(gameObject);
 
         // Play Sound

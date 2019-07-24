@@ -38,7 +38,9 @@ public class Barrier : MonoBehaviour
                 if (playerNum == 1 && GameObject.Find("Player1"))
                     transform.position = GameObject.Find("Player1").transform.position;
                 else if (playerNum == 2 && GameObject.Find("Player2"))
+                {
                     transform.position = GameObject.Find("Player2").transform.position;
+                }
             }
 
             if (!isTimerOn)

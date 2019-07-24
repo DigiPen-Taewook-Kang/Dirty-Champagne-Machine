@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ITEM_FREEZE : MonoBehaviour
 {
+    [SerializeField]
+    GameObject Score500;
     public GameObject gameController;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,7 @@ public class ITEM_FREEZE : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameItemControl>().IsFreezeOn = true;
 
-           
+            Instantiate(Score500, transform.position, transform.rotation);
             Destroy(gameObject);
         }
 

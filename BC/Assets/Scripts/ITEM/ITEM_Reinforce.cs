@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ITEM_Reinforce : MonoBehaviour
 {
-
+    [SerializeField]
+    GameObject Score500;
     public GameObject gamecontroller;
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class ITEM_Reinforce : MonoBehaviour
         {
 
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameItemControl>().IsReinforceOn = true;
-
+            Instantiate(Score500, transform.position, transform.rotation);
             Destroy(gameObject);
         }
 

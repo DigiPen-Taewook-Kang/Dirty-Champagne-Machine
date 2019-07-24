@@ -7,12 +7,15 @@ public class EnemySpwaner : MonoBehaviour
 {
     public float timer;
     private float elapsed;
-    //public Rigidbody2D Enemy_t1;
-    //public Rigidbody2D Enemy_t2;
-    //public Rigidbody2D Enemy_t3;
-    //public Rigidbody2D Enemy_t4;
 
     public Rigidbody2D[] Enemies = new Rigidbody2D[4];
+
+    //Flash
+    public GameObject flash = null;
+
+    public float spawn_timer = 0f;
+    private bool trigger_flash = true;
+    private bool trigger_spawn = false;
 
     public GameObject gameManager;
     private int MaxEnemy;
@@ -20,7 +23,6 @@ public class EnemySpwaner : MonoBehaviour
 
     private float[] spawn;
     private int trig;
-
 
     private int temporder;
     private int[] spawnOrder;
@@ -40,7 +42,7 @@ public class EnemySpwaner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 0.5f;
+        timer = 1.0f;
         elapsed = timer;
         MaxEnemy = 4;
         CurEnemy = 0;
@@ -53,12 +55,7 @@ public class EnemySpwaner : MonoBehaviour
         spawn = new float[3] { 1, 13, -11 };
         trig = 0;
 
-
-
         StageSelect();
-
-
-
 
     }
     void StageSelect()
@@ -84,42 +81,61 @@ public class EnemySpwaner : MonoBehaviour
             + GameObject.FindGameObjectsWithTag("T3Tank").Length
             + GameObject.FindGameObjectsWithTag("T4Tank").Length;
 
-
         if (IngameUIController.leftEnemyCount > 0 && CurEnemy < MaxEnemy)
         {
-            elapsed -= Time.deltaTime;
-            if (elapsed <= 0)
+
+            spawn_timer -= Time.deltaTime;
+
+            if (spawn_timer < 0)
             {
-                spawnXpos = spawn[trig];
-
-                trig++;
-                if (trig == 3)
-                    trig = 0;
+                trigger_spawn = true;
+            }
 
 
-                if ((IngameUIController.leftEnemyCount == 17 ||
-                    IngameUIController.leftEnemyCount == 11 ||
-                    IngameUIController.leftEnemyCount == 7) &&
-                    maxitemCount > itemspawn)
+            if (trigger_spawn)
+            {
+                if (trigger_flash)
                 {
-                    Enemies[spawnOrder[temporder]].GetComponent<EnemySpawnItem>().HadItem = true;
-                    //print("erwerew");
-                    itemspawn++;
+                    spawnXpos = spawn[trig];
+
+                    trig++;
+                    if (trig == 3)
+                        trig = 0;
+                    var temp = Instantiate(flash, new Vector2(spawnXpos, 23), transform.rotation);
+                    Destroy(temp, 1f);
+                    trigger_flash = false;
                 }
                 else
-                    Enemies[spawnOrder[temporder]].GetComponent<EnemySpawnItem>().HadItem = false;
+                {
 
-                Instantiate(Enemies[spawnOrder[temporder]], new Vector2(spawnXpos, 23), transform.rotation);
-                timer = 3.0f;
-                elapsed = timer;
+                    elapsed -= Time.deltaTime;
+                    if (elapsed <= 0)
+                    {
+                        if ((IngameUIController.leftEnemyCount == 17 ||
+                            IngameUIController.leftEnemyCount == 11 ||
+                            IngameUIController.leftEnemyCount == 7) &&
+                            maxitemCount > itemspawn)
+                        {
+                            Enemies[spawnOrder[temporder]].GetComponent<EnemySpawnItem>().HadItem = true;
+                            itemspawn++;
+                        }
+                        else
+                            Enemies[spawnOrder[temporder]].GetComponent<EnemySpawnItem>().HadItem = false;
 
-                gameManager.GetComponent<IngameUIController>().EnemyDestroy();
-                CurEnemy++;
+                        Instantiate(Enemies[spawnOrder[temporder]], new Vector2(spawnXpos, 23), transform.rotation);
+                        timer = 1.0f;
+                        elapsed = timer;
+                        spawn_timer = 1.0f;
 
-                temporder++;
+                        gameManager.GetComponent<IngameUIController>().EnemyDestroy();
+                        CurEnemy++;
+
+                        temporder++;
+                        trigger_spawn = false;
+                        trigger_flash = true;
+                    }
+                }
             }
         }
-
-
     }
 }

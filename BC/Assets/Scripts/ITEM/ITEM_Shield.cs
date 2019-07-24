@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ITEM_Shield : MonoBehaviour
 {
+    [SerializeField]
+    GameObject Score500;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +23,16 @@ public class ITEM_Shield : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameItemControl>().IsShieldOn1 = true;
 
-
+            Instantiate(Score500, transform.position, transform.rotation);
             Destroy(gameObject);
         }
+
+
         if (collision.collider.name == "Player2")
         {
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameItemControl>().IsShieldOn2 = true;
-
-
+            //print("ShiledOn 2");
+            Instantiate(Score500, transform.position, transform.rotation);
             Destroy(gameObject);
         }
 

@@ -9,6 +9,8 @@ public class Player_status : MonoBehaviour
     private int HP;
     [SerializeField]
     private int StarLevel;
+    [SerializeField]
+    GameObject Score500;
 
     public bool ps_IsBarrierOn;
     public float ShieldTimer;
@@ -81,8 +83,10 @@ public class Player_status : MonoBehaviour
         if(collision.collider.tag == "ITEM_Star")
         {
             StarLevel += 1;
+            Instantiate(Score500, transform.position, transform.rotation);
             Destroy(collision.gameObject);
         }
+
 
         if(collision.collider.tag == "ITEM_Shield")
         {
