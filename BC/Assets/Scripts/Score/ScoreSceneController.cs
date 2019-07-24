@@ -63,9 +63,9 @@ public class ScoreSceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isPlayerUIStop)
+        if (!isPlayerUIStop)
         {
-
+            time += Time.deltaTime;
             // waiting for 1sec
             if (time > nextTime)
             {
