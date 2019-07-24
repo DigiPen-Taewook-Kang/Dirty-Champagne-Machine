@@ -26,21 +26,25 @@ public class Movement : MonoBehaviour
             case DIRECTION.LEFT:
                 {
                     transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(-newspeed, 0, 0));
+                    isMoving = true;
                     break;
                 }
             case DIRECTION.RIGHT:
                 {
                     transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(newspeed, 0, 0));
+                    isMoving = true;
                     break;
                 }
             case DIRECTION.UP:
                 {
                     transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(0, newspeed, 0));
+                    isMoving = true;
                     break;
                 }
             case DIRECTION.DOWN:
                 {
                     transform.GetComponent<Rigidbody2D>().velocity = (new Vector3(0, -newspeed, 0));
+                    isMoving = true;
                     break;
                 }
             default:
@@ -152,14 +156,15 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        idleClip = Resources.Load<AudioClip>("Audio Assets/SFX/Idle_Final");
-        moveClip = Resources.Load<AudioClip>("Audio Assets/SFX/Move_Final");
+        // ?
+        //idleClip = Resources.Load<AudioClip>("Audio Assets/SFX/Idle_Final");
+        //moveClip = Resources.Load<AudioClip>("Audio Assets/SFX/Move_Final");
         PlayerMovementAudioSource = GameObject.Find("Player Movement Source").GetComponent<AudioSource>();
 
         // Init Sound Vars
         if (PlayerMovementAudioSource)
         {
-            PlayerMovementAudioSource.clip = idleClip;
+            PlayerMovementAudioSource.clip = (isMoving) ? moveClip: idleClip;
             PlayerMovementAudioSource.Play();
         }
     }
@@ -172,18 +177,22 @@ public class Movement : MonoBehaviour
     //calculations
     private void FixedUpdate()
     {
-        if (!isMoving)
-            GetDirection();
 
         if(PlayerMovementAudioSource)
         {
             PlayerMovementAudioSource.clip = (isMoving) ? moveClip : idleClip;
+            // Clean up after being It used
+            isMoving = false;
 
-            if(!PlayerMovementAudioSource.isPlaying)
+            if (!PlayerMovementAudioSource.isPlaying)
             {
                 PlayerMovementAudioSource.Play();
             }
         }
+
+        if (!isMoving)
+            GetDirection();
+
     }
 
 

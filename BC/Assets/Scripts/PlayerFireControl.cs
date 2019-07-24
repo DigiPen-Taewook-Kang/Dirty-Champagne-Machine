@@ -26,7 +26,7 @@ public class PlayerFireControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shotSoundClip = Resources.Load<AudioClip>("Audio Assets/SFX/Shot-Sound");
+        //shotSoundClip = Resources.Load<AudioClip>("Audio Assets/SFX/Shot-Sound");
         shotSource = GameObject.Find("Shooting Source").GetComponent<AudioSource>();
         shotSource.clip = shotSoundClip;
 

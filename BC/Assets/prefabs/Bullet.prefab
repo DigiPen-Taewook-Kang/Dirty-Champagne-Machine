@@ -103,7 +103,8 @@ MonoBehaviour:
   bullet_explosion: {fileID: 5641429658502384717, guid: 87067c57614527a42b33e0016af99c2f,
     type: 3}
   test: {fileID: 0}
-  ScoreSystem: {fileID: 0}
+  ScoreSystem: {fileID: 7419872742994788694, guid: d3fd8b386998b334f850fc8139cb3d6d,
+    type: 3}
 --- !u!50 &8781170477996231766
 Rigidbody2D:
   serializedVersion: 4

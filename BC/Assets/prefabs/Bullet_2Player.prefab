@@ -1,20 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3386090680183680924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3818414582223623853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10d73ec7f6d49ef4fa28983094fbf1de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet_explosion: {fileID: 5641429658502384717, guid: 87067c57614527a42b33e0016af99c2f,
-    type: 3}
---- !u!1001 &3818414582223623815
+--- !u!1001 &8343551893233004040
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -24,32 +10,28 @@ PrefabInstance:
     - target: {fileID: 8241265162589264419, guid: e4ee469609e131841b13ebce4e4c530a,
         type: 3}
       propertyPath: m_Name
-      value: Enemy_Bullet
+      value: Bullet_2Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8241265162589264419, guid: e4ee469609e131841b13ebce4e4c530a,
+    - target: {fileID: 8929631752193558741, guid: e4ee469609e131841b13ebce4e4c530a,
         type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8241265162589264419, guid: e4ee469609e131841b13ebce4e4c530a,
+      propertyPath: ScoreSystem
+      value: 
+      objectReference: {fileID: 3857393044120757232, guid: 4875b879d5024054bac288b6a38b9821,
         type: 3}
-      propertyPath: m_TagString
-      value: BULLET
-      objectReference: {fileID: 0}
-    - target: {fileID: 8241265162589264419, guid: e4ee469609e131841b13ebce4e4c530a,
+    - target: {fileID: 8929631752193558741, guid: e4ee469609e131841b13ebce4e4c530a,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: isPlayer2
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4711521442346412863, guid: e4ee469609e131841b13ebce4e4c530a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 12.965488
       objectReference: {fileID: 0}
     - target: {fileID: 4711521442346412863, guid: e4ee469609e131841b13ebce4e4c530a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.99902916
       objectReference: {fileID: 0}
     - target: {fileID: 4711521442346412863, guid: e4ee469609e131841b13ebce4e4c530a,
         type: 3}
@@ -96,36 +78,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 483000832370186757, guid: e4ee469609e131841b13ebce4e4c530a,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8929631752193558741, guid: e4ee469609e131841b13ebce4e4c530a,
-        type: 3}
-      propertyPath: hitWall
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8929631752193558741, guid: e4ee469609e131841b13ebce4e4c530a,
-        type: 3}
-      propertyPath: strongWall
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8929631752193558741, guid: e4ee469609e131841b13ebce4e4c530a,
-        type: 3}
-      propertyPath: enemyDead
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8929631752193558741, guid: e4ee469609e131841b13ebce4e4c530a,
-        type: 3}
-      propertyPath: baseDead
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4ee469609e131841b13ebce4e4c530a, type: 3}
---- !u!1 &3818414582223623853 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8241265162589264419, guid: e4ee469609e131841b13ebce4e4c530a,
-    type: 3}
-  m_PrefabInstance: {fileID: 3818414582223623815}
-  m_PrefabAsset: {fileID: 0}

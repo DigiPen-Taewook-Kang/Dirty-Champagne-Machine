@@ -23,7 +23,7 @@ public class ScoreSceneController : MonoBehaviour
     private float nextTime;
     private float time;
 
-
+    public bool isPlayerUIStop;
 
     // Start is called before the first frame update
     private void Start()
@@ -61,24 +61,36 @@ public class ScoreSceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-
-        // waiting for 1sec
-        if (time > nextTime)
+        if(!isPlayerUIStop)
         {
-            if(tankIndex >= 4)
-            {
-                // Code for get out from score scene
-            }
-            time = 0;
-            currScore++;
-            if (currScore > compareScore)
-            {
-                currScore = 0;
-                compareScore = tankData[(++tankIndex)%4];
-            }
-            EnemyCount[tankIndex % 4].text = currScore.ToString();
+            time += Time.deltaTime;
 
+            // waiting for 1sec
+            if (time > nextTime)
+            {
+                if (tankIndex >= 4)
+                {
+                    // Code for get out from score scene
+                }
+                time = 0;
+                currScore++;
+                if (currScore > compareScore)
+                {
+                    isPlayerUIStop = true;
+                    currScore = 0;
+                    compareScore = tankData[(++tankIndex) % 4];
+                }
+                EnemyCount[tankIndex % 4].text = currScore.ToString();
+
+            }
+        }
+        else
+        {
+            if(isPlayerUIStop&&GetComponent<ScoreSceneController2Player>().is2PlayerUIStop)
+            {
+                isPlayerUIStop = false;
+                GetComponent<ScoreSceneController2Player>().is2PlayerUIStop = false;
+            }
         }
     }
 }

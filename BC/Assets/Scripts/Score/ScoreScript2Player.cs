@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreScript : MonoBehaviour
+public class ScoreScript2Player : MonoBehaviour
 {
     private static int score = 0;
     private static int highScore = 20000;
@@ -18,7 +18,7 @@ public class ScoreScript : MonoBehaviour
     {
         // Save score to send to Score Scene
         // Update HighScore
-        if(score > highScore)
+        if (score > highScore)
         {
             highScore = score;
         }
