@@ -30,8 +30,6 @@ public class BulletControl : MonoBehaviour
     public GameObject Item5;
     public GameObject Item6;
 
-    public GameObject ScoreSystem; // 
-
     private int randomindex;
 
     private int randomX;
@@ -50,6 +48,7 @@ public class BulletControl : MonoBehaviour
         {
             ScoreSystem = (isPlayer2)? GameObject.Find("ScoreSystem2Player"): GameObject.Find("ScoreSystem");
         }
+<<<<<<< HEAD
         ScoreSystem = GameObject.Find("ScoreSystem");
         items.Add(Item1);
         items.Add(Item2);
@@ -59,6 +58,8 @@ public class BulletControl : MonoBehaviour
         items.Add(Item6);
 
 
+=======
+>>>>>>> SinilScore
     }
 
     // Update is called once per frame
