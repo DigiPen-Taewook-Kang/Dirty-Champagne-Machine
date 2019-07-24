@@ -55,6 +55,8 @@ public class BulletControl : MonoBehaviour
         items.Add(Item4);
         items.Add(Item5);
         items.Add(Item6);
+
+
     }
 
     // Update is called once per frame

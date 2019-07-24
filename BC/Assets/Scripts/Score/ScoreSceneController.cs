@@ -65,7 +65,6 @@ public class ScoreSceneController : MonoBehaviour
     {
         if(!isPlayerUIStop)
         {
-            time += Time.deltaTime;
 
             // waiting for 1sec
             if (time > nextTime)
